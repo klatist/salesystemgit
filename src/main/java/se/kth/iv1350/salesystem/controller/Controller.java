@@ -34,4 +34,8 @@ public class Controller {
     /**
      * Creates the sale object to represent the sale. 
      */
-   
+    public void startSale()
+    {
+        sale = new Sale(); 
+    }
+}
