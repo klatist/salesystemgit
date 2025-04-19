@@ -1,8 +1,11 @@
 package se.kth.iv1350.salesystem.model; 
 import java.time.LocalDateTime;
 
+import java.util.ArrayList;
+
 public class Sale {
     private LocalDateTime dateTime;
+    private double totalPrice;
     
 
     // Konstruktor som automatiskt sätter aktuellt datum och tid
@@ -14,4 +17,4 @@ public class Sale {
         return dateTime;
     }
 }
-
+//
