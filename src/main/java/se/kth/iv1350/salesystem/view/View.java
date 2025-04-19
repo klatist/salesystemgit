@@ -17,5 +17,9 @@ public class View {
 
     }
 
+    public void runSystem(){
+        contr.startSale();
+    }
+
     
 }

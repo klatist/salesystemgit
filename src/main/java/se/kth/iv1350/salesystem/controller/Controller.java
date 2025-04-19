@@ -38,4 +38,16 @@ public class Controller {
     {
         sale = new Sale(); 
     }
+
+    public SaleDTO scanItem(int itemID, int itemQuantity){
+
+        int position = sale.findInCart(itemID);
+
+        if(position == -1){
+            
+        }
+
+
+        return saleInformation;
+    }
 }
