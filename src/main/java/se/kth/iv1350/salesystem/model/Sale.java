@@ -3,6 +3,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class Sale {
     private LocalDateTime dateTime;
     private Amount totalPrice;
@@ -62,4 +63,4 @@ public class Sale {
         return position;
     }
 }
-
+//
