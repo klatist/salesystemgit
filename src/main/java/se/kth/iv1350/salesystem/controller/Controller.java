@@ -39,14 +39,30 @@ public class Controller {
         sale = new Sale(); 
     }
 
+    /**
+     * Scans an item and 
+     * @param itemID
+     * @param itemQuantity
+     * @return
+     */
     public SaleDTO scanItem(int itemID, int itemQuantity){
 
         int position = sale.findInCart(itemID);
 
         if(position == -1){
+            ItemInformationDTO itemInformation = fetchItemInformation(itemID);
+            if(itemInformation != null){
+                sale.addToCart(itemQuantity, itemInformation);
+            }
+            else
+
             
         }
+        else
+            sale.updateQuantityInCart(position, itemQuantity);
 
+        
+        SaleDTO saleInformation = sale.getSaleInformation();
 
         return saleInformation;
     }

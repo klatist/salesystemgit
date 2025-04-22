@@ -7,7 +7,7 @@ import java.util.List;
 public class Sale {
     private LocalDateTime dateTime;
     private Amount totalPrice;
-    private Amount totalVAT;
+    private double totalVAT;
     private List<Item> cart;
     
 
@@ -15,7 +15,7 @@ public class Sale {
     public Sale() {
         this.dateTime = LocalDateTime.now();  // Sätter aktuellt datum och tid vid skapandet
         this.totalPrice = new Amount();
-        this.totalVAT = new Amount();
+        this.totalVAT = 0.0;
         this.cart = new ArrayList<>();
     }
 
@@ -27,7 +27,7 @@ public class Sale {
         return totalPrice;
     }
 
-    public Amount getTotalVAT(){
+    public double getTotalVAT(){
         return totalVAT;
     }
 
@@ -35,12 +35,30 @@ public class Sale {
         return cart;
     }
 
+
     private int getItemIDFromCart(int positionInCart){
 
         return cart.get(positionInCart).getItemInformation().getItemID();
 
     }
 
+    public SaleDTO getSaleInformation(){
+        SaleDTO saleInformation = new SaleDTO(this);
+
+        return saleInformation;
+
+    }
+
+    private void updateTotalPriceAndVAT(){
+
+        for(Item cartItem : cart)
+        {
+            this.totalPrice.getAmount()
+            this.totalVAT += cartItem.calculateVAT();
+        }   
+
+    }
+    
     /**
      * Search for an already existing item in cart
      * 
@@ -62,5 +80,22 @@ public class Sale {
 
         return position;
     }
+
+    public void addToCart(int itemQuantity, ItemInformationDTO itemInformation){
+        Item scannedItem = new Item(itemQuantity, itemInformation);
+
+        cart.add(scannedItem);
+        updateTotalPriceAndVAT();
+
+    }
+
+    public void updateQuantityInCart(int position, int itemQuantity){
+        cart.get(position).updateQuantity(itemQuantity);
+    }
+
+
 }
+
+    
+
 

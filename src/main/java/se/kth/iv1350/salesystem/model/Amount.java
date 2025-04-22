@@ -22,5 +22,10 @@ public class Amount {
     public double getAmount(){
         return amount;
     }
+
+    public void add (Amount toBeAdded){
+        this.amount += toBeAdded.amount;
+    }
     
+
 }
