@@ -12,10 +12,25 @@ import java.util.List;
 public class ExternalInventory {
     private List<Item> inventory;
 
+    public ExternalInventory(){
+        inventory = new ArrayList();
+    }
+
+    public Item findInInventory(int itemID){
+        
+    }
+
+    /**
+     * 
+     * @param itemID
+     * @return
+     */
     public ItemInformationDTO fetchItemInformation(int itemID){
-        ItemInformationDTO itemInformation = 
+        
+
 
     }
+
 
     private void addItems(){
 

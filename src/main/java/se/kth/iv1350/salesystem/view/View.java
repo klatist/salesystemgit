@@ -10,7 +10,7 @@ public class View {
     private Controller contr;
     /**
      * Creates the view object.
-     * @param contr The the program's controller
+     * @param contr The program's controller
      */
     public View(Controller contr) {
         this.contr = contr;

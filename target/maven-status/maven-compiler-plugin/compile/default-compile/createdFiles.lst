@@ -1,0 +1,17 @@
+se\kth\iv1350\salesystem\integration\DiscountDatabase.class
+se\kth\iv1350\salesystem\model\ItemInformationDTO.class
+se\kth\iv1350\salesystem\startup\Main.class
+se\kth\iv1350\salesystem\model\ReceiptDTO.class
+se\kth\iv1350\salesystem\model\DiscountDTO.class
+se\kth\iv1350\salesystem\model\Item.class
+se\kth\iv1350\salesystem\integration\ExternalAccounting.class
+se\kth\iv1350\salesystem\model\CashPayment.class
+se\kth\iv1350\salesystem\model\Register.class
+se\kth\iv1350\salesystem\integration\ExternalSystemCreator.class
+se\kth\iv1350\salesystem\view\View.class
+se\kth\iv1350\salesystem\integration\Printer.class
+se\kth\iv1350\salesystem\model\Sale.class
+se\kth\iv1350\salesystem\model\SaleDTO.class
+se\kth\iv1350\salesystem\integration\ExternalInventory.class
+se\kth\iv1350\salesystem\App.class
+se\kth\iv1350\salesystem\controller\Controller.class

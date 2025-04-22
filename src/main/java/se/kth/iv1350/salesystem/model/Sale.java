@@ -51,7 +51,7 @@ public class Sale {
     public int findInCart(int scannedItemID){
         int position = -1;
 
-        for(int i = 0; i < cart.size();i++){
+        for(int i = 0; i < cart.size(); i++){
             int existingItemID = getItemIDFromCart(i);
             if(scannedItemID == existingItemID)
             {
@@ -63,4 +63,4 @@ public class Sale {
         return position;
     }
 }
-//
+
