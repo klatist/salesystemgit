@@ -21,6 +21,10 @@ public class SaleDTO {
         return totalVAT;
     }
 
+    public double getRunningTotal(){
+        return totalPrice.getAmount() + totalVAT;
+    }
+
     public List<Item> getCart(){
         return cart;
     }

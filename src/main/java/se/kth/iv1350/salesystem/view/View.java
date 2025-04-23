@@ -1,6 +1,7 @@
 package se.kth.iv1350.salesystem.view; 
 
 import se.kth.iv1350.salesystem.controller.Controller;
+import se.kth.iv1350.salesystem.model.SaleDTO;
 /**
  * The view class is a substitute for the user interface and makes calls to the controller to perform
  * the program functions. 
@@ -20,7 +21,19 @@ public class View {
     public void runSystem(){
         contr.startSale();
 
-        contr.scanItem(itemID, itemQuantity);
+        SaleDTO saleInformation = contr.scanItem(itemID, itemQuantity);
+        if (saleInformation != null)
+        {
+            System.out.println("Item name " + saleInformation.getCart().getLast().getItemInformation().getName());
+            System.out.println("Item desription " + saleInformation.getCart().getLast().getItemInformation().getDescription());
+            System.out.println("Item price " + saleInformation.getCart().getLast().getItemInformation().getPrice());
+            System.out.println("Running Total" + saleInformation.getRunningTotal());
+        }
+        else
+        {
+            System.out.println("itemID does not match an existing item");
+        }
+
     }
 
     

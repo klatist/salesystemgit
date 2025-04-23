@@ -57,7 +57,7 @@ public class Controller {
             }
             else
             {
-
+                return null;
             }
         }
         else{
@@ -65,6 +65,6 @@ public class Controller {
         }
 
         SaleDTO saleInformation = sale.getSaleInformation();
-        return saleInformation;
+        return saleInformation; 
     }
 }
