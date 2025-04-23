@@ -1,7 +1,9 @@
 package se.kth.iv1350.salesystem.model;
 
+import java.util.Currency; //?
+
 public class Amount {
-    private String currency;
+    private Currency currency;
     private double amount;
 
     public Amount(){
@@ -15,6 +17,11 @@ public class Amount {
 
     }
 
+    //bara ha flexibel amount, med SEK
+    public Amount(double amount){
+
+    }
+
     public String getCurrency(){
         return currency;
     }
@@ -25,6 +32,10 @@ public class Amount {
 
     public void add (Amount toBeAdded){
         this.amount += toBeAdded.amount;
+    }
+
+    public Amount multiply(double toBeMultiplied){
+        return new Amount(this.amount*toBeMultiplied);
     }
     
 

@@ -3,7 +3,6 @@ package se.kth.iv1350.salesystem.integration;
 import java.util.ArrayList;
 import java.util.List;
 
-import se.kth.iv1350.salesystem.model.Item;
 import se.kth.iv1350.salesystem.model.ItemInformationDTO;
 /**
  * This class represent an inventory system.
@@ -11,16 +10,16 @@ import se.kth.iv1350.salesystem.model.ItemInformationDTO;
  * with sale information after a completed sale.
  */
 public class ExternalInventory {
-    private List<Item> inventory;
+    private List<ItemInformationDTO> inventory;
 
     public ExternalInventory(){
         inventory = new ArrayList();
     }
 
-    public Item findInInventory(int itemID){
-        for(Item item : inventory)
+    private ItemInformationDTO findInInventory(int itemID){
+        for(ItemInformationDTO item : inventory)
         {
-            if (item.getItemInformation().getItemID() == itemID)
+            if (item.getItemID() == itemID)
             {
                 return item;
             }
@@ -35,14 +34,15 @@ public class ExternalInventory {
      * @return
      */
     public ItemInformationDTO fetchItemInformation(int itemID){
-        Item item = findInInventory(itemID);
+        //ItemInformationDTO item = findInInventory(itemID);
 
-        if(item != null){
-            return item.getItemInformation();
+        return findInInventory(itemID);
 
+        /*if(item != null){
+            return item;
         }
         else
-            return null;
+            return null;*/
     }
 
 

@@ -22,7 +22,7 @@ public class Item {
     Amount calculatePrice(){
         double itemPriceAmount = this.itemQuantity * this.getItemInformation().getPrice().getAmount();
         
-        
+        return new Amount(itemPriceAmount);
 
     }
 
