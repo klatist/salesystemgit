@@ -50,20 +50,21 @@ public class Controller {
         int position = sale.findInCart(itemID);
 
         if(position == -1){
-            ItemInformationDTO itemInformation = fetchItemInformation(itemID);
-            if(itemInformation != null){
+            ItemInformationDTO itemInformation = extInventory.fetchItemInformation(itemID);
+            if(itemInformation != null)
+            {
                 sale.addToCart(itemQuantity, itemInformation);
             }
             else
+            {
 
-            
+            }
         }
-        else
+        else{
             sale.updateQuantityInCart(position, itemQuantity);
+        }
 
-        
         SaleDTO saleInformation = sale.getSaleInformation();
-
         return saleInformation;
     }
 }
