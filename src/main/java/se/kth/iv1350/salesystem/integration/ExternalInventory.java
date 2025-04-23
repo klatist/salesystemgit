@@ -10,22 +10,17 @@ import se.kth.iv1350.salesystem.model.ItemInformationDTO;
  * with sale information after a completed sale.
  */
 public class ExternalInventory {
+
     private List<ItemInformationDTO> inventory;
 
     public ExternalInventory(){
         inventory = new ArrayList();
     }
 
-    private ItemInformationDTO findInInventory(int itemID){
-        for(ItemInformationDTO item : inventory)
-        {
-            if (item.getItemID() == itemID)
-            {
-                return item;
-            }
-        }
-
-        return null;
+    private void addItem(){
+        inventory.add(new ItemInformationDTO(null, null, 0, 0, null));
+        inventory.add(new ItemInformationDTO(null, null, 0, 0, null));
+        inventory.add(new ItemInformationDTO(null, null, 0, 0, null));
     }
 
     /**
@@ -34,20 +29,13 @@ public class ExternalInventory {
      * @return
      */
     public ItemInformationDTO fetchItemInformation(int itemID){
-        //ItemInformationDTO item = findInInventory(itemID);
-
-        return findInInventory(itemID);
-
-        /*if(item != null){
-            return item;
+        for(ItemInformationDTO item : inventory)
+        {
+            if (item.getItemID() == itemID)
+            {
+                return item;
+            }
         }
-        else
-            return null;*/
+        return null;
     }
-
-
-    private void addItems(){
-
-    }
-    
 }
