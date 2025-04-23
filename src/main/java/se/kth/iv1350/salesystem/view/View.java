@@ -18,6 +18,9 @@ public class View {
         this.contr = contr;
     }
 
+    /**
+     * Runs the program by making calls to the controller according to flow.
+     */
     public void runSystem(){
         contr.startSale();
 

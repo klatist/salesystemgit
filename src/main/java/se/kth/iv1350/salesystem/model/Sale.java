@@ -11,7 +11,9 @@ public class Sale {
     private List<Item> cart;
     
 
-    
+    /**
+     * Constructor that creates a Sale object.
+     */
     public Sale() {
         this.dateTime = LocalDateTime.now();  
         this.totalPrice = new Amount();
@@ -49,6 +51,9 @@ public class Sale {
 
     }
 
+    /**
+     * Updates the total price and the total VAT for all the items in the cart.
+     */
     private void updateTotalPriceAndVAT(){
 
         for(Item cartItem : cart)
@@ -81,6 +86,15 @@ public class Sale {
         return position;
     }
 
+
+    /**
+     * Updates the cart by creating an item, adding the item to the cart and calculating the new total
+     * price and VAT.
+     * 
+     * @param itemQuantity Represents the quantity of the item that has been scanned.
+     * @param itemInformation Represents the information about the item that has been 
+     *        fetched from the external inventory system.
+     */
     public void addToCart(int itemQuantity, ItemInformationDTO itemInformation){
         Item scannedItem = new Item(itemQuantity, itemInformation);
 
@@ -89,8 +103,15 @@ public class Sale {
 
     }
 
+    /**
+     * Updates the quantity of the item in the cart and calculates the new total price and VAT.
+     * 
+     * @param position Represents the position where the item already exists in the cart.
+     * @param itemQuantity Represents the quantity of the item to be added to the cart.
+     */
     public void updateQuantityInCart(int position, int itemQuantity){
         cart.get(position).updateQuantity(itemQuantity);
+        updateTotalPriceAndVAT();
     }
 
 
