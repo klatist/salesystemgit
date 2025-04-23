@@ -30,6 +30,7 @@ public class SaleDTO {
     }
 
     public ItemInformationDTO getCurrentItemInformation(){
+        
        return this.getCart().get(this.getCart().size()-1).getItemInformation();
     }
     
