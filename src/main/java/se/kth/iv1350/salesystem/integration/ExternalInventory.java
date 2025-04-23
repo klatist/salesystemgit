@@ -24,7 +24,7 @@ public class ExternalInventory {
         inventory.add(new ItemInformationDTO("Kalaspuffar",new Amount(40.95) , 654321, 0.12, "Gör din frukost till en fest med våra flingor"));
         inventory.add(new ItemInformationDTO("Jordnötsmör", new Amount(23.50), 111111, 0.12, "Skippy smooth ;)"));
     }
-
+    
     /**
      * This method...
      * @param itemID
