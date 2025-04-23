@@ -11,9 +11,9 @@ public class Sale {
     private List<Item> cart;
     
 
-    // Konstruktor som automatiskt sätter aktuellt datum och tid
+    
     public Sale() {
-        this.dateTime = LocalDateTime.now();  // Sätter aktuellt datum och tid vid skapandet
+        this.dateTime = LocalDateTime.now();  
         this.totalPrice = new Amount();
         this.totalVAT = 0.0;
         this.cart = new ArrayList<>();

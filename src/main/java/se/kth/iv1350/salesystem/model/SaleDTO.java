@@ -29,5 +29,8 @@ public class SaleDTO {
         return cart;
     }
 
+    public ItemInformationDTO currentItemInformation(){
+       return this.getCart().get(this.getCart().size()-1).getItemInformation();
+    }
     
 }
