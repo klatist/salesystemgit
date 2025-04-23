@@ -53,8 +53,8 @@ public class Sale {
 
         for(Item cartItem : cart)
         {
-            this.totalPrice.getAmount()
-            this.totalVAT += cartItem.calculateVAT();
+            this.totalPrice.add(cartItem.calculateItemPrice());
+            this.totalVAT += cartItem.calculateItemVAT();
         }   
 
     }

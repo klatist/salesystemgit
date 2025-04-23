@@ -7,11 +7,11 @@ public class Amount {
     private double amount;
 
     public Amount(){
-        this.currency = "SEK";
+        this.currency = Currency.getInstance("SEK");
         this.amount = 0;
     }
 
-    public Amount(String currency, double amount){
+    public Amount(Currency currency, double amount){
         this.currency = currency;
         this.amount = amount;
 
@@ -22,7 +22,7 @@ public class Amount {
 
     }
 
-    public String getCurrency(){
+    public Currency getCurrency(){
         return currency;
     }
 

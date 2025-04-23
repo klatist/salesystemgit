@@ -19,14 +19,14 @@ public class Item {
         return itemInformation;
     }
 
-    Amount calculatePrice(){
-        double itemPriceAmount = this.itemQuantity * this.getItemInformation().getPrice().getAmount();
+    Amount calculateItemPrice(){
+        Amount itemPriceAmount = this.getItemInformation().getPrice();
         
-        return new Amount(itemPriceAmount);
+        return itemPriceAmount.multiply(itemQuantity);
 
     }
 
-    double calculateVAT(){
+    double calculateItemVAT(){
 
         return this.getItemInformation().getPrice().getAmount() * this.getItemInformation().getVATRate() * this.itemQuantity;
 
