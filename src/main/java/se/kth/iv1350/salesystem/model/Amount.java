@@ -49,7 +49,9 @@ public class Amount {
      * @param toBeAdded Represents the amount that is to be added to the current amount.
      */
     public void add (Amount toBeAdded){
+        if (toBeAdded != null){
         this.amount += toBeAdded.amount;
+        }
     }
 
     /**
