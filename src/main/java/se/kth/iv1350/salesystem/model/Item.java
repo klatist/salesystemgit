@@ -15,6 +15,11 @@ public class Item {
         this.itemInformation = itemInformation;
 
     }
+    public Item(ItemInformationDTO itemInformation){
+        this.itemQuantity = 1;
+        this.itemInformation = itemInformation;
+
+    }
 
     public int getItemQuantity(){
         return itemQuantity;

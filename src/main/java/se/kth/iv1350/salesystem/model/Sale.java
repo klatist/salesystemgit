@@ -113,7 +113,8 @@ public class Sale {
         cart.get(position).updateQuantity(itemQuantity);
         updateTotalPriceAndVAT();
     }
-
+    
+    
 
 }
 
