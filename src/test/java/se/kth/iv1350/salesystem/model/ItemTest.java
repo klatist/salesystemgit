@@ -71,8 +71,8 @@ public class ItemTest {
     }
 
     @Test
-    public void testUpdateQuantityToZero(){
+    public void testUpdateQuantityInvalidQuantity(){
         itemDefaultQuantity.updateQuantity(-1); 
-        assertEquals(0, itemDefaultQuantity.getItemQuantity());
+        assertEquals(1, itemDefaultQuantity.getItemQuantity());
     }
 }

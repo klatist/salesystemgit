@@ -57,7 +57,9 @@ public class Item {
      * @param newItemQuantity Represents the quantity to be added.
      */
     void updateQuantity(int newItemQuantity){
-        this.itemQuantity += newItemQuantity;
+        if (this.itemQuantity + newItemQuantity > 0){
+            this.itemQuantity += newItemQuantity;
+        }
     }
     
 }
