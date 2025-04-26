@@ -18,25 +18,33 @@ public class View {
         this.contr = contr;
     }
 
+
     /**
      * Runs the program by making calls to the controller according to flow.
      */
     public void runSystem(){
         contr.startSale();
 
-        SaleDTO saleInformation = contr.scanItem(123456, 2);
-        if (saleInformation != null)
-        {
-            System.out.println("Item name " + saleInformation.getCurrentItemInformation().getName());
-            System.out.println("Item desription " + saleInformation.getCurrentItemInformation().getDescription());
-            System.out.println("Item price " + saleInformation.getCurrentItemInformation().getPrice());
-            System.out.println("Running Total" + saleInformation.getRunningTotal());
-        }
-        else
-        {
-            System.out.println("itemID does not match an existing item");
-        }
+        int[] itemIDs = {123456, };
+        int[] quantities = {1, };
 
+        for(int i = 0; i < itemIDs.length; i++)
+        {
+            SaleDTO saleInformation = contr.scanItem(itemIDs[i], quantities[i]);
+
+            if (saleInformation != null)
+            {
+                int currentItemPosition = saleInformation.getCart().size()-1;
+                System.out.println("Item name " + saleInformation.getCurrentItem(currentItemPosition).getName());
+                System.out.println("Item desription " + saleInformation.getCurrentItem(currentItemPosition).getDescription());
+                System.out.println("Item price " + saleInformation.getCurrentItem(currentItemPosition).getPrice());
+                System.out.println("Running Total" + saleInformation.getRunningTotal());
+            }
+            else
+            {
+                System.out.println("itemID " + itemIDs[i] + "does not match an existing item");
+            }
+        }
     }
 
     

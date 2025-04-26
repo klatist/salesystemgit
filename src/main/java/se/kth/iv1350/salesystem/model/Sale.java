@@ -51,6 +51,7 @@ public class Sale {
 
     }
 
+
     /**
      * Updates the total price and the total VAT for all the items in the cart.
      */
