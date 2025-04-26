@@ -48,6 +48,10 @@ public class View {
         }
 
         Amount finalTotalPrice = contr.endSale();
+        System.out.println("Total cost: " + finalTotalPrice.getAmount());
+        Amount paidAmount = new Amount(0);
+        Amount change = contr.pay(paidAmount);
+        System.out.println("Change: " + change.getAmount());
     }
 
     
