@@ -1,6 +1,7 @@
 package se.kth.iv1350.salesystem.view; 
 
 import se.kth.iv1350.salesystem.controller.Controller;
+import se.kth.iv1350.salesystem.model.Amount;
 import se.kth.iv1350.salesystem.model.SaleDTO;
 
 /**
@@ -45,6 +46,8 @@ public class View {
                 System.out.println("itemID " + itemIDs[i] + "does not match an existing item");
             }
         }
+
+        Amount finalTotalPrice = contr.endSale();
     }
 
     

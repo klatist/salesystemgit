@@ -48,11 +48,12 @@ public class Amount {
      * Adds an another amount to current amount.
      * @param toBeAdded Represents the amount that is to be added to the current amount.
      */
-    public void add (Amount toBeAdded){
+    public void addAmount (Amount toBeAdded){
         if (toBeAdded != null){
         this.amount += toBeAdded.amount;
         }
     }
+
 
     /**
      * Multiplies the current <code>amount</code> with a number.

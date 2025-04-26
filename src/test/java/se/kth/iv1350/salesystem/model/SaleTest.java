@@ -2,9 +2,6 @@ package se.kth.iv1350.salesystem.model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-
-import java.lang.annotation.Target;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -56,6 +53,15 @@ public class SaleTest {
         sale.addToCart(1, itemInformation);
         int result = sale.findInCart(654321);
         assertEquals(2, result);
+    }
+
+    @Test
+    public void testAddToEmptyCart(){
+        Sale emptySale = new Sale();
+        ItemInformationDTO iteminformation = new ItemInformationDTO("Kalaspuffar",new Amount(40.95) , 654321, 0.12, "Gör din frukost till en fest med våra flingor");
+        emptySale.addToCart(1, iteminformation);
+        int result = emptySale.findInCart(654321);
+        assertEquals(0, result, "If item was added to an empty cart it should be at index 0");
     }
 
     @Test

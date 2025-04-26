@@ -6,6 +6,7 @@ import java.util.List;
 
 public class Sale {
     private LocalDateTime dateTime;
+    private Amount totalPriceExcVAT;
     private Amount totalPrice;
     private double totalVAT;
     private List<Item> cart;
@@ -16,7 +17,7 @@ public class Sale {
      */
     public Sale() {
         this.dateTime = LocalDateTime.now();  
-        this.totalPrice = new Amount();
+        this.totalPriceExcVAT = new Amount();
         this.totalVAT = 0.0;
         this.cart = new ArrayList<>();
     }
@@ -25,12 +26,17 @@ public class Sale {
         return dateTime;
     }
 
-    public Amount getTotalPrice(){
-        return totalPrice;
+    public Amount getTotalPriceExcVAT(){
+        return totalPriceExcVAT;
     }
 
     public double getTotalVAT(){
         return totalVAT;
+    }
+
+    public Amount getTotalPrice(){
+        Amount totalPrice = new Amount(totalPriceExcVAT.getAmount()+totalVAT);
+        return totalPrice;
     }
 
     public List<Item> getCart(){
@@ -50,6 +56,7 @@ public class Sale {
         return saleInformation;
 
     }
+    
 
 
     /**
@@ -59,7 +66,7 @@ public class Sale {
 
         for(Item cartItem : cart)
         {
-            this.totalPrice.add(cartItem.calculateItemPrice());
+            this.totalPriceExcVAT.addAmount(cartItem.calculateItemPrice());
             this.totalVAT += cartItem.calculateItemVAT();
         }   
 
@@ -112,7 +119,7 @@ public class Sale {
      * @param itemQuantity Represents the quantity of the item to be added to the cart.
      */
     public void updateQuantityInCart(int position, int itemQuantity){
-        if (position > cart.size()-1 || position < 0){
+        if (position <= cart.size()-1 || position >= 0){
             cart.get(position).updateQuantity(itemQuantity);
             updateTotalPriceAndVAT();
         }

@@ -1,7 +1,15 @@
 package se.kth.iv1350.salesystem.controller;
 
-import se.kth.iv1350.salesystem.model.*;
-import se.kth.iv1350.salesystem.integration.*;
+import se.kth.iv1350.salesystem.integration.DiscountDatabase;
+import se.kth.iv1350.salesystem.integration.ExternalAccounting;
+import se.kth.iv1350.salesystem.integration.ExternalInventory;
+import se.kth.iv1350.salesystem.integration.ExternalSystemCreator;
+import se.kth.iv1350.salesystem.integration.Printer;
+import se.kth.iv1350.salesystem.model.Amount;
+import se.kth.iv1350.salesystem.model.ItemInformationDTO;
+import se.kth.iv1350.salesystem.model.Register;
+import se.kth.iv1350.salesystem.model.Sale;
+import se.kth.iv1350.salesystem.model.SaleDTO;
 
 /**
  The controller is a middle-layer between view to model and integration. The calls methods in model and integration 
@@ -27,7 +35,6 @@ public class Controller {
         this.discdatabase = creator.getDiscountDatabase();
         this.extAccounting = creator.getExternalAccounting();
         this.printer = creator.getPrinter();
-
     }
 
     private Sale sale; 
@@ -66,5 +73,10 @@ public class Controller {
 
         SaleDTO saleInformation = sale.getSaleInformation();
         return saleInformation; 
+    }
+
+    public Amount endSale()
+    {
+        return sale.getTotalPrice();
     }
 }

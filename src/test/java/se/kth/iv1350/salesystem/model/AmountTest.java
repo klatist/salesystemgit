@@ -1,11 +1,9 @@
 package se.kth.iv1350.salesystem.model;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import java.util.Currency;
 
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -53,7 +51,7 @@ public class AmountTest {
     @Test 
     public void testAddPositiveAmount(){
         Amount toBeAdded = new Amount(2);
-        amountAdd.add(toBeAdded);
+        amountAdd.addAmount(toBeAdded);
         assertEquals(2, amountAdd.getAmount(), "expected value after adding is 2");
 
     }
@@ -61,7 +59,7 @@ public class AmountTest {
     @Test 
     public void testAddNegativeAmount(){
         Amount toBeAdded = new Amount(-2);
-        amountAdd.add(toBeAdded);
+        amountAdd.addAmount(toBeAdded);
         assertEquals(-2, amountAdd.getAmount(), "expectd value after adding is -2");
 
     }
@@ -69,7 +67,7 @@ public class AmountTest {
     @Test 
     public void testAddNullObject(){
         Amount toBeAdded = null;
-        amountAdd.add(toBeAdded);
+        amountAdd.addAmount(toBeAdded);
         assertEquals(0, amountAdd.getAmount(), "the value should not change");
     }
     
