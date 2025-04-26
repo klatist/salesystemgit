@@ -5,6 +5,7 @@ import java.util.List;
 
 import se.kth.iv1350.salesystem.model.Amount;
 import se.kth.iv1350.salesystem.model.ItemInformationDTO;
+import se.kth.iv1350.salesystem.model.SaleDTO;
 /**
  * This class represent an inventory system.
  * It holds information about all items available in the store and is updated 
@@ -39,5 +40,9 @@ public class ExternalInventory {
             }
         }
         return null;
+    }
+
+    public void updateInventory(SaleDTO finalSaleInformation){
+
     }
 }

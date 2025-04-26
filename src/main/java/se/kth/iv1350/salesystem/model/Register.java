@@ -11,5 +11,9 @@ public class Register {
         this.balance = 0.0; 
     }
 
+    public void updateBalance(SaleDTO finalSaleInformation){
+        this.balance += finalSaleInformation.getRunningTotal();
+    }
+
 
 }

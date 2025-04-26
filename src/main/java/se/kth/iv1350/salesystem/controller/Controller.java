@@ -6,6 +6,7 @@ import se.kth.iv1350.salesystem.integration.ExternalInventory;
 import se.kth.iv1350.salesystem.integration.ExternalSystemCreator;
 import se.kth.iv1350.salesystem.integration.Printer;
 import se.kth.iv1350.salesystem.model.Amount;
+import se.kth.iv1350.salesystem.model.CashPayment;
 import se.kth.iv1350.salesystem.model.ItemInformationDTO;
 import se.kth.iv1350.salesystem.model.Register;
 import se.kth.iv1350.salesystem.model.Sale;
@@ -78,5 +79,20 @@ public class Controller {
     public Amount endSale()
     {
         return sale.getTotalPrice();
+    }
+
+    public Amount pay(Amount paidAmount){
+
+        SaleDTO finalSaleInformation = sale.getSaleInformation();
+        extAccounting.updateAccounting(finalSaleInformation);
+        extInventory.updateInventory(finalSaleInformation);
+
+        CashPayment payment = new CashPayment(sale, paidAmount);
+        Amount change = payment.getChange();
+
+        register.updateBalance(finalSaleInformation);
+
+
+        return change;
     }
 }

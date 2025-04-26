@@ -39,6 +39,10 @@ public class Sale {
         return totalPrice;
     }
 
+    public double getTotalPriceAmount(){
+        return totalPrice.getAmount();
+    }
+
     public List<Item> getCart(){
         return cart;
     }
