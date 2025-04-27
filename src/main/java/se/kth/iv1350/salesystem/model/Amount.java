@@ -1,7 +1,9 @@
 package se.kth.iv1350.salesystem.model;
 
 import java.util.Currency; 
-
+/**
+ * This class represents an amount of money of a specified currency.
+ */
 public class Amount {
     private Currency currency;
     private double amount;
@@ -45,7 +47,8 @@ public class Amount {
     }
 
     /**
-     * Adds an another amount to current amount.
+     * Adds another <code>Amount</code> to this amount.
+     * If the parameter is <code>null</code>, no change occurs.
      * @param toBeAdded Represents the amount that is to be added to the current amount.
      */
     public void addAmount (Amount toBeAdded){
@@ -54,11 +57,10 @@ public class Amount {
         }
     }
 
-
     /**
-     * Multiplies the current <code>amount</code> with a number.
+     * Multiplies the current <code>amount</code> with a number and creates a ne
      * @param toBeMultiplied Represents the factor to be multiplied with.
-     * @return returns the new <code>amount</code> that has been calculated.
+     * @return returns a new <code>amount</code> that has been calculated.
      */
     public Amount multiply(double toBeMultiplied){
         return new Amount(this.amount*toBeMultiplied);

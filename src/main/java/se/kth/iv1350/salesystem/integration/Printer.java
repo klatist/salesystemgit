@@ -9,13 +9,18 @@ import se.kth.iv1350.salesystem.model.ReceiptDTO;
  */
 public class Printer {
 
+    /**
+     * Prints the recipt containing time of sale, list of items, total amount and VAT, the amount paid and given change.
+     * @param receipt <code>ReceeiptDTO</code> containing all information about the sale. 
+     */
+
     public void printReceipt(ReceiptDTO receipt){
         System.out.println("----- RECEIPT -----");
         System.out.println("Time of sale: " + receipt.getDateTime());
         System.out.println();
+
         printCart(receipt.getCart());
 
-        
         System.out.printf("\n Total: %.2f %s", 
             receipt.getTotalPriceAmount(), 
             receipt.getTotalPrice().getCurrency().toString());
@@ -33,7 +38,10 @@ public class Printer {
             receipt.getTotalPrice().getCurrency().toString());
 
     }
-    
+    /**
+     * Helpmethod to print the name, quantity, price, combined price and currency of each item .  
+     * @param cart Represent the list of bought items with quantities. 
+     */
     private void printCart(List<Item> cart){
         for(Item item : cart){
             System.out.printf("%-20s %2d x %6.2f %8.2f %s\n", 

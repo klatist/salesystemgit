@@ -12,8 +12,9 @@ public class Sale {
     private List<Item> cart;
     
 
-    /**
-     * Constructor that creates a Sale object.
+   /**
+     * Creates a new <code>Sale</code> instance with the current date and time,
+     * an empty shopping cart, and total price and VAT set to zero.
      */
     public Sale() {
         this.dateTime = LocalDateTime.now();  
@@ -47,7 +48,11 @@ public class Sale {
         return cart;
     }
 
-
+    /**
+     * Gets the itemID of an item at a given postion.
+     * @param positionInCart The position if the item
+     * @return The itemID of the item
+     */
     private int getItemIDFromCart(int positionInCart){
 
         return cart.get(positionInCart).getItemInformation().getItemID();
@@ -61,10 +66,10 @@ public class Sale {
 
     }
     
-
+    
 
     /**
-     * Updates the total price and the total VAT for all the items in the cart.
+     * Updates the runnning total price exc VAT and the total VAT for the sale. 
      */
     public void updateTotalPriceAndVAT(){
 

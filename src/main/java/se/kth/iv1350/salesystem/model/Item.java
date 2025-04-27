@@ -6,7 +6,7 @@ public class Item {
     private ItemInformationDTO itemInformation;
 
     /**
-     * Constructor that creates an item.
+     * Constructor that creates an item with a specified quantity. 
      * @param itemQuantity Represents the quantity of the item.
      * @param itemInformation Represents information about the item such as name and price.
      */
@@ -15,6 +15,10 @@ public class Item {
         this.itemInformation = itemInformation;
 
     }
+    /**
+     * Constructor that creates an item with the deafult value 1.  
+     * @param itemQuantity Represents the quantity of the item.
+     */
     public Item(ItemInformationDTO itemInformation){
         this.itemQuantity = 1;
         this.itemInformation = itemInformation;
@@ -56,11 +60,11 @@ public class Item {
 
     /**
      * Calculates the total price for the current item.
-     * @return returns the total price <code>amount</code> for the item.
+     * @return returns the total price <code>Amount</code> for the item.
      */
     Amount calculateItemPrice(){
         Amount itemPriceAmount = this.getPrice();
-        
+
         return itemPriceAmount.multiply(itemQuantity);
 
     }

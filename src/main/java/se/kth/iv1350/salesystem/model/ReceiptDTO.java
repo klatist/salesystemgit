@@ -2,7 +2,9 @@ package se.kth.iv1350.salesystem.model;
 
 import java.time.LocalDateTime;
 import java.util.List;
-
+/**
+ * This class hold all the information used to print the receipt
+ */
 public class ReceiptDTO {
     private LocalDateTime dateTime;
     private List<Item> cart;
@@ -11,6 +13,10 @@ public class ReceiptDTO {
     private Amount paidAmount;
     private Amount change;
 
+    /**
+     * Creates a <code>ReceiptDTO</code> containing all necessary information for generating a receipt, based on a completed payment.
+     * @param payment The <code>CashPayment</code> containing all relevant information about the sale and the payment.
+     */
     public ReceiptDTO(CashPayment payment){
         this.dateTime = payment.getSale().getDateTime();
         this.cart = payment.getSale().getCart();
