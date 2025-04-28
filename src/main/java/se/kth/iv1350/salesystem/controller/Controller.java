@@ -109,11 +109,4 @@ public class Controller {
         Amount change = payment.getChange();
 
         register.updateBalance(finalSaleInformation);
-        return change;
-    }
-
-    public void printReceipt(){
-        payment.printReceipt(printer);
-    }
-}
-
+        ret

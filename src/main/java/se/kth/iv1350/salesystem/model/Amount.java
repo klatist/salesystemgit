@@ -46,25 +46,5 @@ public class Amount {
         return value;
     }
 
-    /**
-     * Adds another <code>Amount</code> to this amount.
-     * If the parameter is <code>null</code>, no change occurs.
-     * @param toBeAdded Represents the amount that is to be added to the current amount.
-     */
-    public void addAmount (Amount toBeAdded){
-        if (toBeAdded != null){
-        this.value += toBeAdded.value;
-        }
-    }
-
-    /**
-     * Multiplies the current <code>amount</code> with a number and creates a ne
-     * @param toBeMultiplied Represents the factor to be multiplied with.
-     * @return returns a new <code>amount</code> that has been calculated.
-     */
-    public Amount multiply(double toBeMultiplied){
-        return new Amount(this.value*toBeMultiplied);
-    }
-    
 
 }
