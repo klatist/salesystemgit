@@ -50,4 +50,7 @@ public class ExternalInventory {
      *
      * @param finalSaleInformation Information about the completed sale.
      */
-    public void updateInventory(SaleDTO finalSaleInformat
+    public void updateInventory(SaleDTO finalSaleInformation){
+
+    }
+}

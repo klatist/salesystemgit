@@ -50,4 +50,8 @@ public class ReceiptDTO {
         return paidAmount;
     }
 
-    public Amount g
+    public Amount getChange(){
+        return change;
+    }
+    
+}
