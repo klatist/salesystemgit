@@ -49,8 +49,7 @@ public class Sale {
      */
     private int getItemIDFromCart(int positionInCart){
 
-        return cart.get(positionInCart).getItemInformation().getItemID();
-
+        return cart.get(positionInCart).getItemID();
     }
 
     public SaleDTO getSaleInformation(){

@@ -35,11 +35,11 @@ public class View {
 
             if (saleInformation != null)
             {
-                int currentItemPosition = saleInformation.getCart().size()-1;
-                System.out.println("Item name: " + saleInformation.getCurrentItem(currentItemPosition).getName());
-                System.out.println("Item desription: " + saleInformation.getCurrentItem(currentItemPosition).getDescription());
-                System.out.println("Item price: " + saleInformation.getCurrentItem(currentItemPosition).getValue());
-                System.out.println("Running Total: " + saleInformation.getTotalPriceValue());
+                int currentItemPosition = saleInformation.getCurrentCart().size()-1;
+                System.out.println("Item name: " + saleInformation.getCurrentItem(currentItemPosition).getItemName());
+                System.out.println("Item desription: " + saleInformation.getCurrentItem(currentItemPosition).getItemDescription());
+                System.out.println("Item price: " + saleInformation.getCurrentItem(currentItemPosition).getItemValue());
+                System.out.println("Running Total: " + saleInformation.getTotalSalePriceValue());
             }
             else
             {

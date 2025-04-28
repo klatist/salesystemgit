@@ -3,34 +3,34 @@ package se.kth.iv1350.salesystem.model;
 import java.util.List;
 
 public class SaleDTO {
-    private Amount totalPrice;
-    private double totalVAT;
-    private List<Item> cart;
+    private Amount totalSalePrice;
+    private double totalSaleVAT;
+    private List<Item> currentCart;
 
     public SaleDTO(Sale sale){
-        this.totalPrice = sale.getTotalPrice();
-        this.totalVAT = sale.getTotalVAT();
-        this.cart = sale.getCart();
+        this.totalSalePrice = sale.getTotalPrice();
+        this.totalSaleVAT = sale.getTotalVAT();
+        this.currentCart = sale.getCart();
     }
 
-    public Amount getTotalPrice(){
-        return totalPrice;
+    public Amount getSaleTotalPrice(){
+        return totalSalePrice;
     }
 
-    public double getTotalPriceValue(){
-        return totalPrice.getValue();
+    public double getTotalSalePriceValue(){
+        return totalSalePrice.getValue();
     }
     
-    public double getTotalVAT(){
-        return totalVAT;
+    public double getTotaSaleVAT(){
+        return totalSaleVAT;
     }
 
-    public List<Item> getCart(){
-        return cart;
+    public List<Item> getCurrentCart(){
+        return currentCart;
     }
 
     public Item getCurrentItem(int position){
         
-        return this.getCart().get(position);
+        return this.getCurrentCart().get(position);
     }
 }

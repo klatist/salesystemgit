@@ -22,20 +22,20 @@ public class Printer {
         printCart(receipt.getCart());
 
         System.out.printf("\n Total: %.2f %s", 
-            receipt.getTotalPriceValue(), 
-            receipt.getTotalPrice().getCurrency().toString());
+            receipt.getFinalTotalPriceValue(), 
+            receipt.getFinalTotalPrice().getCurrency().toString());
 
         System.out.printf("\n VAT: %.2f %s",
-            receipt.getTotalVAT(),
-            receipt.getTotalPrice().getCurrency().toString());
+            receipt.getFinalTotalVAT(),
+            receipt.getFinalTotalPrice().getCurrency().toString());
 
         System.out.printf("\n Cash: %.2f %s",
             receipt.getPaidAmount().getValue(),
-            receipt.getTotalPrice().getCurrency().toString());
+            receipt.getFinalTotalPrice().getCurrency().toString());
 
         System.out.printf("\n Change: %.2f %s",
             receipt.getChange().getValue(),
-            receipt.getTotalPrice().getCurrency().toString());
+            receipt.getFinalTotalPrice().getCurrency().toString());
 
     }
     /**
@@ -45,11 +45,11 @@ public class Printer {
     private void printCart(List<Item> cart){
         for(Item item : cart){
             System.out.printf("%-20s %2d x %6.2f %8.2f %s\n", 
-                item.getName(),
+                item.getItemName(),
                 item.getItemQuantity(),
-                item.getValue(),
-                item.getItemQuantity() * item.getValue(),
-                item.getPrice().getCurrency().toString());
+                item.getItemValue(),
+                item.getItemQuantity() * item.getItemValue(),
+                item.getItemPrice().getCurrency().toString());
         }
     }
 }

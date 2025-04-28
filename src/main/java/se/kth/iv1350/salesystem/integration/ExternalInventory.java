@@ -37,7 +37,7 @@ public class ExternalInventory {
     public ItemInformationDTO fetchItemInformation(int itemID){
         for(ItemInformationDTO itemInformation : inventory)
         {
-            if (itemInformation.getItemID() == itemID)
+            if (itemInformation.getID() == itemID)
             {
                 return itemInformation;
             }

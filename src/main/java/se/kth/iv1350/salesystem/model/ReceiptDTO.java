@@ -8,8 +8,8 @@ import java.util.List;
 public class ReceiptDTO {
     private LocalDateTime dateTime;
     private List<Item> cart;
-    private Amount totalPrice;
-    private double totalVAT;
+    private Amount finalTotalPrice;
+    private double finalTotalVAT;
     private Amount paidAmount;
     private Amount change;
 
@@ -20,8 +20,8 @@ public class ReceiptDTO {
     public ReceiptDTO(CashPayment payment){
         this.dateTime = payment.getSale().getDateTime();
         this.cart = payment.getSale().getCart();
-        this.totalPrice = payment.getSale().getTotalPrice();
-        this.totalVAT = payment.getSale().getTotalVAT();
+        this.finalTotalPrice = payment.getSale().getTotalPrice();
+        this.finalTotalVAT = payment.getSale().getTotalVAT();
         this.paidAmount = payment.getPaidAmount();
         this.change = payment.getChange();
     }
@@ -34,16 +34,16 @@ public class ReceiptDTO {
         return cart;
     }
 
-    public Amount getTotalPrice(){
-        return totalPrice;
+    public Amount getFinalTotalPrice(){
+        return finalTotalPrice;
     }
 
-    public double getTotalPriceValue(){
-        return totalPrice.getValue();
+    public double getFinalTotalPriceValue(){
+        return finalTotalPrice.getValue();
     }
 
-    public double getTotalVAT(){
-        return totalVAT;
+    public double getFinalTotalVAT(){
+        return finalTotalVAT;
     }
 
     public Amount getPaidAmount(){

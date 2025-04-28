@@ -34,7 +34,7 @@ public class ItemInformationDTO {
         return price;
     }
 
-    public int getItemID(){
+    public int getID(){
         return itemID;
     }
 

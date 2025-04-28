@@ -33,27 +33,27 @@ public class Item {
         return itemInformation;
     }
 
-    public String getName(){
+    public String getItemName(){
         return itemInformation.getName();
     }
 
-    public Amount getPrice(){
+    public Amount getItemPrice(){
         return itemInformation.getPrice();
     }
 
-    public double getValue(){
+    public double getItemValue(){
         return itemInformation.getPrice().getValue();
     }
 
     public int getItemID(){
-        return itemInformation.getItemID();
+        return itemInformation.getID();
     }
 
-    public double getVATRate(){
+    public double getItemVATRate(){
         return itemInformation.getVATRate();
     }
 
-    public String getDescription(){
+    public String getItemDescription(){
         return itemInformation.getDescription();
     }
 
@@ -63,7 +63,7 @@ public class Item {
      * @return returns the total price <code>Amount</code> for the item.
      */
     double calculateItemPrice(){
-        double itemPriceAmount = this.getValue();
+        double itemPriceAmount = this.getItemValue();
         return itemPriceAmount * itemQuantity;
 
     }
@@ -74,7 +74,7 @@ public class Item {
      */
     double calculateItemVAT(){
 
-        return this.getValue() * this.getVATRate() * this.itemQuantity;
+        return this.getItemValue() * this.getItemVATRate() * this.itemQuantity;
 
     }
 
