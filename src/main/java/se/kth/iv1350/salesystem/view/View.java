@@ -39,12 +39,15 @@ public class View {
                 System.out.println("Item name: " + saleInformation.getCurrentItem(currentItemPosition).getItemName());
                 System.out.println("Item desription: " + saleInformation.getCurrentItem(currentItemPosition).getItemDescription());
                 System.out.println("Item price: " + saleInformation.getCurrentItem(currentItemPosition).getItemValue());
-                System.out.println("Running Total: " + saleInformation.getTotalSalePriceValue());
+                System.out.println("Running Total: " + saleInformation.getRunningTotalValue());
             }
             else
             {
                 System.out.println("itemID: " + itemIDs[i] + " does not match an existing item");
             }
+
+            System.out.println("");
+            System.out.println("");
         }
 
         Amount finalTotalPrice = contr.endSale();

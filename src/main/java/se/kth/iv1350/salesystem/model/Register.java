@@ -16,7 +16,7 @@ public class Register {
      */
     
     public void updateBalance(SaleDTO finalSaleInformation){
-        this.balance += finalSaleInformation.getTotalSalePriceValue();
+        this.balance += finalSaleInformation.getRunningTotalValue();
     }
 
 

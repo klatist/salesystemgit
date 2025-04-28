@@ -17,7 +17,7 @@ public class ExternalInventory {
      * Sets up the store inventory with chosen items. 
      */
     public ExternalInventory(){
-        inventory = new ArrayList();
+        inventory = new ArrayList<>();
         addItem();
     }
     /**
