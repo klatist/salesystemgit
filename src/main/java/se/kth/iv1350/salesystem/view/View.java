@@ -52,4 +52,12 @@ public class View {
 
         Amount finalTotalPrice = contr.endSale();
         System.out.println();
-        System.out.printf("Total Cost: %.2f%n", finalTotalPrice.getValu
+        System.out.printf("Total Cost: %.2f%n", finalTotalPrice.getValue());
+        Amount paidAmount = new Amount(200);
+        Amount change = contr.pay(paidAmount);
+        System.out.printf("Change: %.2f%n\n", change.getValue());
+        contr.printReceipt();
+    }
+
+    
+}
