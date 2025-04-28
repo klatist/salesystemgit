@@ -26,8 +26,8 @@ public class View {
     public void runSystem(){
         contr.startSale();
 
-        int[] itemIDs = {123456, };
-        int[] quantities = {1, };
+        int[] itemIDs = {123456, 654321};
+        int[] quantities = {1, 2};
 
         for(int i = 0; i < itemIDs.length; i++)
         {
@@ -36,22 +36,23 @@ public class View {
             if (saleInformation != null)
             {
                 int currentItemPosition = saleInformation.getCart().size()-1;
-                System.out.println("Item name " + saleInformation.getCurrentItem(currentItemPosition).getName());
-                System.out.println("Item desription " + saleInformation.getCurrentItem(currentItemPosition).getDescription());
-                System.out.println("Item price " + saleInformation.getCurrentItem(currentItemPosition).getPrice());
-                System.out.println("Running Total" + saleInformation.getRunningTotal());
+                System.out.println("Item name: " + saleInformation.getCurrentItem(currentItemPosition).getName());
+                System.out.println("Item desription: " + saleInformation.getCurrentItem(currentItemPosition).getDescription());
+                System.out.println("Item price: " + saleInformation.getCurrentItem(currentItemPosition).getPriceAmount());
+                System.out.println("Running Total: " + saleInformation.getRunningTotal());
             }
             else
             {
-                System.out.println("itemID " + itemIDs[i] + "does not match an existing item");
+                System.out.println("itemID: " + itemIDs[i] + " does not match an existing item");
             }
         }
 
         Amount finalTotalPrice = contr.endSale();
         System.out.println("Total cost: " + finalTotalPrice.getAmount());
-        Amount paidAmount = new Amount(0);
+        Amount paidAmount = new Amount(20);
         Amount change = contr.pay(paidAmount);
         System.out.println("Change: " + change.getAmount());
+        contr.printReceipt();
     }
 
     

@@ -17,6 +17,7 @@ public class Main {
         ExternalSystemCreator creator = new ExternalSystemCreator();
         Controller contr = new Controller(creator);
         View view = new View(contr);
+        view.runSystem();
         System.out.println("det fungeerar");
     }
 

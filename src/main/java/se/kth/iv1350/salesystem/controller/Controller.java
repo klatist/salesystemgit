@@ -38,6 +38,8 @@ public class Controller {
     }
 
     private Sale sale; 
+    private CashPayment payment;
+
     /**
      * Creates the <code>sale</code> object to represent and hold information about the sale. 
      */
@@ -107,8 +109,11 @@ public class Controller {
         Amount change = payment.getChange();
 
         register.updateBalance(finalSaleInformation);
-
-
         return change;
     }
+
+    public void printReceipt(){
+        payment.printReceipt(printer);
+    }
 }
+
