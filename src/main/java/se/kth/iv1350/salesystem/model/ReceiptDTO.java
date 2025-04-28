@@ -38,8 +38,8 @@ public class ReceiptDTO {
         return totalPrice;
     }
 
-    public double getTotalPriceAmount(){
-        return totalPrice.getAmount();
+    public double getTotalPriceValue(){
+        return totalPrice.getValue();
     }
 
     public double getTotalVAT(){

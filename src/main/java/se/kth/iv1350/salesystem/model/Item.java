@@ -41,8 +41,8 @@ public class Item {
         return itemInformation.getPrice();
     }
 
-    public double getPriceAmount(){
-        return itemInformation.getPrice().getAmount();
+    public double getValue(){
+        return itemInformation.getPrice().getValue();
     }
 
     public int getItemID(){
@@ -62,10 +62,9 @@ public class Item {
      * Calculates the total price for the current item.
      * @return returns the total price <code>Amount</code> for the item.
      */
-    Amount calculateItemPrice(){
-        Amount itemPriceAmount = this.getPrice();
-
-        return itemPriceAmount.multiply(itemQuantity);
+    double calculateItemPrice(){
+        double itemPriceAmount = this.getValue();
+        return itemPriceAmount * itemQuantity;
 
     }
 
@@ -75,7 +74,7 @@ public class Item {
      */
     double calculateItemVAT(){
 
-        return this.getPriceAmount() * this.getVATRate() * this.itemQuantity;
+        return this.getValue() * this.getVATRate() * this.itemQuantity;
 
     }
 

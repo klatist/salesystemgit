@@ -22,7 +22,7 @@ public class Printer {
         printCart(receipt.getCart());
 
         System.out.printf("\n Total: %.2f %s", 
-            receipt.getTotalPriceAmount(), 
+            receipt.getTotalPriceValue(), 
             receipt.getTotalPrice().getCurrency().toString());
 
         System.out.printf("\n VAT: %.2f %s",
@@ -30,11 +30,11 @@ public class Printer {
             receipt.getTotalPrice().getCurrency().toString());
 
         System.out.printf("\n Cash: %.2f %s",
-            receipt.getPaidAmount().getAmount(),
+            receipt.getPaidAmount().getValue(),
             receipt.getTotalPrice().getCurrency().toString());
 
         System.out.printf("\n Change: %.2f %s",
-            receipt.getChange().getAmount(),
+            receipt.getChange().getValue(),
             receipt.getTotalPrice().getCurrency().toString());
 
     }
@@ -47,8 +47,8 @@ public class Printer {
             System.out.printf("%-20s %2d x %6.2f %8.2f %s\n", 
                 item.getName(),
                 item.getItemQuantity(),
-                item.getPriceAmount(),
-                item.getItemQuantity()*item.getPriceAmount(),
+                item.getValue(),
+                item.getItemQuantity() * item.getValue(),
                 item.getPrice().getCurrency().toString());
         }
     }

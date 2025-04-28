@@ -6,7 +6,6 @@ import java.util.List;
 
 public class Sale {
     private LocalDateTime dateTime;
-    private Amount totalPriceExcVAT;
     private Amount totalPrice;
     private double totalVAT;
     private List<Item> cart;
@@ -18,7 +17,7 @@ public class Sale {
      */
     public Sale() {
         this.dateTime = LocalDateTime.now();  
-        this.totalPriceExcVAT = new Amount();
+        this.totalPrice = new Amount();
         this.totalVAT = 0.0;
         this.cart = new ArrayList<>();
     }
@@ -27,21 +26,16 @@ public class Sale {
         return dateTime;
     }
 
-    public Amount getTotalPriceExcVAT(){
-        return totalPriceExcVAT;
-    }
-
     public double getTotalVAT(){
         return totalVAT;
     }
 
     public Amount getTotalPrice(){
-        Amount totalPrice = new Amount(totalPriceExcVAT.getAmount()+totalVAT);
         return totalPrice;
     }
 
-    public double getTotalPriceAmount(){
-        return totalPrice.getAmount();
+    public double getTotalPriceValue(){
+        return totalPrice.getValue();
     }
 
     public List<Item> getCart(){
@@ -72,12 +66,17 @@ public class Sale {
      * Updates the runnning total price exc VAT and the total VAT for the sale. 
      */
     public void updateTotalPriceAndVAT(){
+        double totalPriceExcVAT = 0.0;
+        double calculatedVAT = 0.0;
+
 
         for(Item cartItem : cart)
         {
-            this.totalPriceExcVAT.addAmount(cartItem.calculateItemPrice());
-            this.totalVAT += cartItem.calculateItemVAT();
+            totalPriceExcVAT += cartItem.calculateItemPrice();
+            calculatedVAT += cartItem.calculateItemVAT();
         }   
+        this.totalVAT = calculatedVAT;
+        this.totalPrice = new Amount(totalPriceExcVAT + totalVAT);
 
     }
     

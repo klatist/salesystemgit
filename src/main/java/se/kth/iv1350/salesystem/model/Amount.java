@@ -6,7 +6,7 @@ import java.util.Currency;
  */
 public class Amount {
     private Currency currency;
-    private double amount;
+    private double value;
 
     /**
      * Constructor that creates an <code>Amount</code> object with default values for <code>currency</code>
@@ -14,17 +14,17 @@ public class Amount {
      */
     public Amount(){
         this.currency = Currency.getInstance("SEK");
-        this.amount = 0;
+        this.value = 0;
     }
 
     /**
      * Constructor that creates an <code>Amount</code> object without any default values.
      * @param currency Represents the <code>currency</code> that should be used.
-     * @param amount Represents the <code>amount</code> of money.
+     * @param value Represents the <code>amount</code> of money.
      */
-    public Amount(Currency currency, double amount){
+    public Amount(Currency currency, double value){
         this.currency = currency;
-        this.amount = amount;
+        this.value = value;
 
     }
 
@@ -33,17 +33,17 @@ public class Amount {
      * <code>currency> set to SEK but no default value for the <code>amount</code>.
      * @param amount Represents the <code>amount</code> of money.
      */
-    public Amount(double amount){
+    public Amount(double value){
         this.currency = Currency.getInstance("SEK");
-        this.amount = amount;
+        this.value = value;
     }
 
     public Currency getCurrency(){
         return currency;
     }
 
-    public double getAmount(){
-        return amount;
+    public double getValue(){
+        return value;
     }
 
     /**
@@ -53,7 +53,7 @@ public class Amount {
      */
     public void addAmount (Amount toBeAdded){
         if (toBeAdded != null){
-        this.amount += toBeAdded.amount;
+        this.value += toBeAdded.value;
         }
     }
 
@@ -63,7 +63,7 @@ public class Amount {
      * @return returns a new <code>amount</code> that has been calculated.
      */
     public Amount multiply(double toBeMultiplied){
-        return new Amount(this.amount*toBeMultiplied);
+        return new Amount(this.value*toBeMultiplied);
     }
     
 

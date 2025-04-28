@@ -38,8 +38,8 @@ public class View {
                 int currentItemPosition = saleInformation.getCart().size()-1;
                 System.out.println("Item name: " + saleInformation.getCurrentItem(currentItemPosition).getName());
                 System.out.println("Item desription: " + saleInformation.getCurrentItem(currentItemPosition).getDescription());
-                System.out.println("Item price: " + saleInformation.getCurrentItem(currentItemPosition).getPriceAmount());
-                System.out.println("Running Total: " + saleInformation.getRunningTotal());
+                System.out.println("Item price: " + saleInformation.getCurrentItem(currentItemPosition).getValue());
+                System.out.println("Running Total: " + saleInformation.getTotalPriceValue());
             }
             else
             {
@@ -48,10 +48,10 @@ public class View {
         }
 
         Amount finalTotalPrice = contr.endSale();
-        System.out.println("Total cost: " + finalTotalPrice.getAmount());
+        System.out.println("Total cost: " + finalTotalPrice.getValue());
         Amount paidAmount = new Amount(20);
         Amount change = contr.pay(paidAmount);
-        System.out.println("Change: " + change.getAmount());
+        System.out.println("Change: " + change.getValue());
         contr.printReceipt();
     }
 
