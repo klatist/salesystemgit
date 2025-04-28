@@ -50,10 +50,4 @@ public class Printer {
         for(Item item : cart){
             System.out.printf("%-20s %2d x %6.2f %8.2f %s\n", 
                 item.getItemName(),
-                item.getItemQuantity(),
-                item.getItemValue(),
-                item.getItemQuantity() * item.getItemValue(),
-                item.getItemPrice().getCurrency().toString());
-        }
-    }
-}
+    
