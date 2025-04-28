@@ -36,7 +36,7 @@ public class CashPayment {
      * @return the <code>Amount</code> change 
      */
     private Amount calculateChange(){
-        return new Amount(this.sale.getTotalPriceValue()-this.paidAmount.getValue());
+        return new Amount(this.paidAmount.getValue() - this.sale.getTotalPriceValue());
     }
 
     /**

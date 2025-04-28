@@ -105,7 +105,7 @@ public class Controller {
         extAccounting.updateAccounting(finalSaleInformation);
         extInventory.updateInventory(finalSaleInformation);
 
-        CashPayment payment = new CashPayment(sale, paidAmount);
+        payment = new CashPayment(sale, paidAmount);
         Amount change = payment.getChange();
 
         register.updateBalance(finalSaleInformation);

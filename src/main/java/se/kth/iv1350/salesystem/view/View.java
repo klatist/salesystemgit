@@ -29,6 +29,8 @@ public class View {
         int[] itemIDs = {123456, 654321};
         int[] quantities = {1, 2};
 
+        System.out.println("---- SALE -----");
+
         for(int i = 0; i < itemIDs.length; i++)
         {
             SaleDTO saleInformation = contr.scanItem(itemIDs[i], quantities[i]);
@@ -39,22 +41,21 @@ public class View {
                 System.out.println("Item name: " + saleInformation.getCurrentItem(currentItemPosition).getItemName());
                 System.out.println("Item desription: " + saleInformation.getCurrentItem(currentItemPosition).getItemDescription());
                 System.out.println("Item price: " + saleInformation.getCurrentItem(currentItemPosition).getItemValue());
-                System.out.println("Running Total: " + saleInformation.getRunningTotalValue());
+                System.out.printf("\nRunning Total: %.2f", saleInformation.getRunningTotalValue());
             }
             else
             {
                 System.out.println("itemID: " + itemIDs[i] + " does not match an existing item");
             }
-
-            System.out.println("");
-            System.out.println("");
+            System.out.println("\n");
         }
 
         Amount finalTotalPrice = contr.endSale();
-        System.out.println("Total cost: " + finalTotalPrice.getValue());
-        Amount paidAmount = new Amount(20);
+        System.out.println();
+        System.out.printf("Total Cost: %.2f%n", finalTotalPrice.getValue());
+        Amount paidAmount = new Amount(200);
         Amount change = contr.pay(paidAmount);
-        System.out.println("Change: " + change.getValue());
+        System.out.printf("Change: %.2f%n\n", change.getValue());
         contr.printReceipt();
     }
 

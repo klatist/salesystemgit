@@ -1,5 +1,6 @@
 package se.kth.iv1350.salesystem.integration;
 
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import se.kth.iv1350.salesystem.model.Item;
@@ -15,8 +16,9 @@ public class Printer {
      */
 
     public void printReceipt(ReceiptDTO receipt){
+        DateTimeFormatter formatter =  DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         System.out.println("----- RECEIPT -----");
-        System.out.println("Time of sale: " + receipt.getDateTime());
+        System.out.println("Time of sale: " + receipt.getDateTime().format(formatter));
         System.out.println();
 
         printCart(receipt.getCart());
@@ -36,6 +38,8 @@ public class Printer {
         System.out.printf("\n Change: %.2f %s",
             receipt.getChange().getValue(),
             receipt.getFinalTotalPrice().getCurrency().toString());
+
+        System.out.println();
 
     }
     /**
