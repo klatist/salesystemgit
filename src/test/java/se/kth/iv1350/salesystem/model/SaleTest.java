@@ -24,10 +24,12 @@ public class SaleTest {
     @Test
     public void testUpdateTotalPriceAndVAT(){
         sale.updateTotalPriceAndVAT();
-        double newTotalPrice  = sale.getTotalPrice().getAmount();
+        double newTotalPrice  = sale.getTotalPriceValue();
         double newTotalVAT = sale.getTotalVAT();
-        double expTotalPrice = 25.95 + 15.50;
+
         double expTotalVAT = 25.95*0.12 + 15.50*0.12;
+        double expTotalPrice =  25.95 + 15.50 + expTotalVAT;
+        
         assertEquals(expTotalPrice, newTotalPrice);
         assertEquals(expTotalVAT, newTotalVAT);
     }

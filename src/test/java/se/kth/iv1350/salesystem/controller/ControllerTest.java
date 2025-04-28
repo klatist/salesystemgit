@@ -8,13 +8,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import se.kth.iv1350.salesystem.integration.ExternalSystemCreator;
-import se.kth.iv1350.salesystem.model.Sale;
 import se.kth.iv1350.salesystem.model.SaleDTO;
 
 public class ControllerTest {
     private Controller defaultContr;
     private ExternalSystemCreator defaultCreator;
-    private Sale sale;
 
 
     
@@ -58,8 +56,8 @@ public class ControllerTest {
         defaultContr.scanItem(123456, 1);
 
         SaleDTO saleInformation = defaultContr.scanItem(123456, 5);
-        int result = saleInformation.getCart().get(0).getItemQuantity();
-        int cartSize = saleInformation.getCart().size();
+        int result = saleInformation.getCurrentCart().get(0).getItemQuantity();
+        int cartSize = saleInformation.getCurrentCart().size();
         assertEquals(6, result, "If item added correctly, quantity should be updated to 6");
         assertEquals(1,cartSize,"Cart size should remain unchanged if itemID already existed in cart");
     }

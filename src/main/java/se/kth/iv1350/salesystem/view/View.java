@@ -26,8 +26,8 @@ public class View {
     public void runSystem(){
         contr.startSale();
 
-        int[] itemIDs = {123456, 654321};
-        int[] quantities = {1, 2};
+        int[] itemIDs = {123456,121212,654321};
+        int[] quantities = {1, 1, 2};
 
         System.out.println("---- SALE -----");
 
@@ -52,12 +52,4 @@ public class View {
 
         Amount finalTotalPrice = contr.endSale();
         System.out.println();
-        System.out.printf("Total Cost: %.2f%n", finalTotalPrice.getValue());
-        Amount paidAmount = new Amount(200);
-        Amount change = contr.pay(paidAmount);
-        System.out.printf("Change: %.2f%n\n", change.getValue());
-        contr.printReceipt();
-    }
-
-    
-}
+        System.out.printf("Total Cost: %.2f%n", finalTotalPrice.getValu

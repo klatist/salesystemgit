@@ -33,29 +33,29 @@ public class ItemTest {
 
     @Test
     public void testCalculatePriceDefaultQuantity(){
-        double result = itemDefaultQuantity.calculateItemPrice().getAmount();
-        double expPrice = 1 * itemDefaultQuantity.getItemInformation().getPrice().getAmount();
+        double result = itemDefaultQuantity.calculateItemPrice();
+        double expPrice = 1 * itemDefaultQuantity.getItemValue();
         assertEquals(expPrice, result);
     }
 
 
     @Test
     public void testCalculatePriceLargerQuantity(){
-        double result = itemLargerQuantity.calculateItemPrice().getAmount();
-        double expPrice = 3 * itemLargerQuantity.getItemInformation().getPrice().getAmount();
+        double result = itemLargerQuantity.calculateItemPrice();
+        double expPrice = 3 * itemLargerQuantity.getItemValue();
         assertEquals(expPrice, result);
 }
 
     @Test
     public void testcalculateItemVATDefaultCuantity(){
         double result = itemDefaultQuantity.calculateItemVAT();
-        assertEquals(itemDefaultQuantity.getItemInformation().getVATRate() * itemDefaultQuantity.getItemInformation().getPrice().getAmount(), result);
+        assertEquals(itemDefaultQuantity.getItemInformation().getVATRate() * itemDefaultQuantity.getItemValue(), result);
     }
     
     @Test
     public void testcalculateItemVATLargerCuantity(){
         double result = itemLargerQuantity.calculateItemVAT();
-        assertEquals(itemLargerQuantity.getItemInformation().getVATRate() * itemLargerQuantity.getItemInformation().getPrice().getAmount() * 3, result);
+        assertEquals(itemLargerQuantity.getItemInformation().getVATRate() * itemLargerQuantity.getItemValue()* 3, result);
     }
 
     @Test

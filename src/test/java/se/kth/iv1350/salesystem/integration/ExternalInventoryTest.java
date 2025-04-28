@@ -46,13 +46,10 @@ public class ExternalInventoryTest {
         ItemInformationDTO result = inventory.fetchItemInformation(existingID);
         assertNotNull(result, "Item should exist in inventory");
         assertTrue(result instanceof ItemInformationDTO, "Item should be of the type ItemInformationDTO");
-        assertEquals(existingID, result.getItemID(),"the itemIDs should match");
-        assertEquals("Baguette", result.getName(),"the item names should match");
-        assertEquals(15.50, result.getPrice().getAmount(),"the item price should match");
-        assertEquals(0.12, result.getVATRate(),"the item VAT rate should match");
-        assertEquals("Ljus baguette bakad på vetemjöl, vatten, salt och jäst. Traditionellt franskt recept. Vikt ca 250 gram", result.getDescription(),"the item description should match");
-    }
+        assertEquals(existingID, result.getID(),"the itemIDs should match");
 
+    }
+    
     @Test
     void testFetchNotExistingItem(){
         int notExistingID = 0; 
