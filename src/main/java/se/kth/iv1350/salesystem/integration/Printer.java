@@ -3,11 +3,10 @@ package se.kth.iv1350.salesystem.integration;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
-import se.kth.iv1350.salesystem.model.Item;
-import se.kth.iv1350.salesystem.model.ReceiptDTO;
 import se.kth.iv1350.salesystem.model.ItemDTO;
+import se.kth.iv1350.salesystem.model.ReceiptDTO;
 /**
- * The printer prints a receipt containing saleinformation after a completd sale.  
+ * This class prints a receipt containing saleinformation after a completd sale.  
  */
 public class Printer {
 

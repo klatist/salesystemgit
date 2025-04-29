@@ -1,7 +1,7 @@
 package se.kth.iv1350.salesystem.integration;
 /**
- * This class creates all the classes handling and giving access to the external systems Inventory, DiscountDatabase, 
- * Accounting and Pinter.
+ * This class creates all the classes handling and giving access to the external systems <code>ExternalInventory</code>,  <code>DiscountDatabase</code>, 
+ *  <code>ExternalAccounting</code> and  <code>Pinter</code>.
  */
 public class ExternalSystemCreator {
 
