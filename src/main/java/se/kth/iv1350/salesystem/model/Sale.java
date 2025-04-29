@@ -8,7 +8,7 @@ public class Sale {
     private LocalDateTime dateTime;
     private Amount totalPrice;
     private double totalVAT;
-    private List<Item> cart;
+    private Cart cart;
     
 
    /**
@@ -19,7 +19,7 @@ public class Sale {
         this.dateTime = LocalDateTime.now();  
         this.totalPrice = new Amount();
         this.totalVAT = 0.0;
-        this.cart = new ArrayList<>();
+        this.cart = new Cart();
     }
 
     public LocalDateTime getDateTime() {
@@ -38,18 +38,8 @@ public class Sale {
         return totalPrice.getValue();
     }
 
-    public List<Item> getCart(){
+    public Cart getCart(){
         return cart;
-    }
-
-    /**
-     * Gets the itemID of an item at a given postion.
-     * @param positionInCart The position if the item
-     * @return The itemID of the item
-     */
-    private int getItemIDFromCart(int positionInCart){
-
-        return cart.get(positionInCart).getItemID();
     }
 
     public SaleDTO getSaleInformation(){
@@ -59,7 +49,6 @@ public class Sale {
 
     }
     
-    
 
     /**
      * Updates the runnning total price exc VAT and the total VAT for the sale. 
@@ -68,8 +57,7 @@ public class Sale {
         double totalPriceExcVAT = 0.0;
         double calculatedVAT = 0.0;
 
-
-        for(Item cartItem : cart)
+        for(Item cartItem : cart.getCart())
         {
             totalPriceExcVAT += cartItem.calculateItemPrice();
             calculatedVAT += cartItem.calculateItemVAT();
@@ -79,29 +67,6 @@ public class Sale {
 
     }
     
-    /**
-     * Search for an already existing item in cart
-     * 
-     * @param scannedItemID Represents the item id the cashier recently scanned
-     * @return return the item <code>position</code> in <code>cart</code> if found, 
-     *         if not found -1 is returned.
-     */
-    public int findInCart(int scannedItemID){
-        int position = -1;
-
-        for(int i = 0; i < cart.size(); i++){
-            int existingItemID = getItemIDFromCart(i);
-            if(scannedItemID == existingItemID)
-            {
-                position = i;
-                return position;
-            }
-        }
-
-        return position;
-    }
-
-
     /**
      * Updates the cart by creating an item, adding the item to the cart and calculating the new total
      * price and VAT.
@@ -126,8 +91,11 @@ public class Sale {
      * @param itemQuantity Represents the quantity of the item to be added to the cart.
      */
     public void updateQuantityInCart(int position, int itemQuantity){
-        if (position <= cart.size()-1 || position >= 0){
-            cart.get(position).updateQuantity(itemQuantity);
+        int cartSize = cart.getCart().size()-1;
+        Item currentItem = cart.getItem(position);
+
+        if (position <= cartSize|| position >= 0){
+            currentItem.updateQuantity(itemQuantity);
             updateTotalPriceAndVAT();
         }
     }   

@@ -7,7 +7,7 @@ import java.util.List;
  */
 public class ReceiptDTO {
     private LocalDateTime dateTime;
-    private List<Item> cart;
+    private List<ItemDTO> cart;
     private Amount finalTotalPrice;
     private double finalTotalVAT;
     private Amount paidAmount;
@@ -19,7 +19,7 @@ public class ReceiptDTO {
      */
     public ReceiptDTO(CashPayment payment){
         this.dateTime = payment.getSale().getDateTime();
-        this.cart = payment.getSale().getCart();
+        this.cart = payment.getSale().getCart().toItemDTOCart();
         this.finalTotalPrice = payment.getSale().getTotalPrice();
         this.finalTotalVAT = payment.getSale().getTotalVAT();
         this.paidAmount = payment.getPaidAmount();
@@ -30,7 +30,7 @@ public class ReceiptDTO {
         return dateTime;
     }
 
-    public List<Item> getCart(){
+    public List<ItemDTO> getCart(){
         return cart;
     }
 

@@ -32,15 +32,7 @@ public class Item {
     public ItemInformationDTO getItemInformation(){
         return itemInformation;
     }
-
-    public String getItemName(){
-        return itemInformation.getName();
-    }
-
-    public Amount getItemPrice(){
-        return itemInformation.getPrice();
-    }
-
+    
     public double getItemValue(){
         return itemInformation.getPrice().getValue();
     }
@@ -53,10 +45,10 @@ public class Item {
         return itemInformation.getVATRate();
     }
 
-    public String getItemDescription(){
-        return itemInformation.getDescription();
+    public ItemDTO getItemDTO(){
+        ItemDTO itemDTO = new ItemDTO(this);
+        return itemDTO;
     }
-
 
     /**
      * Calculates the total price for the current item.

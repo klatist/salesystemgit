@@ -5,6 +5,7 @@ import java.util.List;
 
 import se.kth.iv1350.salesystem.model.Item;
 import se.kth.iv1350.salesystem.model.ReceiptDTO;
+import se.kth.iv1350.salesystem.model.ItemDTO;
 /**
  * The printer prints a receipt containing saleinformation after a completd sale.  
  */
@@ -46,8 +47,8 @@ public class Printer {
      * Helpmethod to print the name, quantity, price, combined price and currency of each item .  
      * @param cart Represent the list of bought items with quantities. 
      */
-    private void printCart(List<Item> cart){
-        for(Item item : cart){
+    private void printCart(List<ItemDTO> cart){
+        for(ItemDTO item : cart){
             System.out.printf("%-20s %2d x %6.2f %8.2f %s\n", 
                 item.getItemName(),
                 item.getItemQuantity(),

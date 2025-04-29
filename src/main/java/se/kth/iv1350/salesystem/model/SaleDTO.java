@@ -1,16 +1,19 @@
 package se.kth.iv1350.salesystem.model;
 
+
 import java.util.List;
+import java.util.ArrayList;
 
 public class SaleDTO {
     private Amount runningTotal;
     private double runningTotalVAT;
-    private List<Item> currentCart;
+    private List<ItemDTO> currentCart;
 
     public SaleDTO(Sale sale){
         this.runningTotal = sale.getTotalPrice();
         this.runningTotalVAT = sale.getTotalVAT();
-        this.currentCart = sale.getCart();
+        this.currentCart = sale.getCart().toItemDTOCart();
+
     }
 
     public Amount getRunningTotal(){
@@ -25,11 +28,11 @@ public class SaleDTO {
         return runningTotalVAT;
     }
 
-    public List<Item> getCurrentCart(){
+    public List<ItemDTO> getCurrentCart(){
         return currentCart;
     }
 
-    public Item getCurrentItem(int position){
+    public ItemDTO getCurrentItem(int position){
         
         return this.getCurrentCart().get(position);
     }
