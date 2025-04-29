@@ -8,6 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import se.kth.iv1350.salesystem.integration.ExternalSystemCreator;
+import se.kth.iv1350.salesystem.model.AmountDTO;
 import se.kth.iv1350.salesystem.model.SaleDTO;
 
 public class ControllerTest {
@@ -27,7 +28,8 @@ public class ControllerTest {
 
     @AfterEach
     public void tearDown(){
-
+        defaultCreator = null;
+        defaultContr = null;
     }
 
     @Test 
@@ -60,6 +62,48 @@ public class ControllerTest {
         int cartSize = saleInformation.getCurrentCart().size();
         assertEquals(6, result, "If item added correctly, quantity should be updated to 6");
         assertEquals(1,cartSize,"Cart size should remain unchanged if itemID already existed in cart");
+    }
+
+    @Test
+    public void testEndSale(){
+        defaultContr.scanItem(123456, 2);
+        defaultContr.scanItem(654321, 1);
+        double expTotalVAT = 2*15.50*0.12 + 40.95*0.12;
+        double expResult = 2*15.50+40.95+expTotalVAT;
+        double result = defaultContr.endSale().getValue();
+        assertEquals(expResult, result, "Actual total price should be equal expected total price");
+    }
+
+    @Test 
+    public void testPayWithZero(){
+        defaultContr.scanItem(12345, 2);
+        defaultContr.scanItem(654321, 1);
+        AmountDTO totalPrice = defaultContr.endSale();
+        AmountDTO paidAmount = new AmountDTO(0);
+        double result = defaultContr.pay(paidAmount).getValue();
+        double expResult = 0-totalPrice.getValue();
+        assertEquals(expResult, result, "Expected change should match actual change and be a negative value");
+    }
+
+    @Test
+    public void testPayWithExactAmount(){
+        defaultContr.scanItem(12345, 2);
+        defaultContr.scanItem(654321, 1);
+        AmountDTO totalPrice = defaultContr.endSale();
+        AmountDTO paidAmount = new AmountDTO(totalPrice.getValue());
+        double result = defaultContr.pay(paidAmount).getValue();
+        assertEquals(0, result, "Actual change should be 0, since the paid amount and total price matches");
+    }
+
+    @Test 
+    public void testPayWithLargerSum(){
+        defaultContr.scanItem(12345, 2);
+        defaultContr.scanItem(654321, 1);
+        AmountDTO totalPrice = defaultContr.endSale();
+        AmountDTO paidAmount = new AmountDTO(500);
+        double expResult = 500-totalPrice.getValue();
+        double result = defaultContr.pay(paidAmount).getValue();
+        assertEquals(expResult, result, "Expected change should match the actual change, and it should be a positive value");
     }
 
 }

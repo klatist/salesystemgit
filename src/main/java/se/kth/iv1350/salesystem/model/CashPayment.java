@@ -33,7 +33,7 @@ public class CashPayment {
     }
     /**
      * Calculates the change based on the ampunt paid and the total price of the sale. 
-     * @return the <code>Amount</code> change 
+     * @return the <code>AmountDTO</code> change 
      */
     private AmountDTO calculateChange(){
         return new AmountDTO(this.paidAmount.getValue() - this.sale.getTotalPriceValue());

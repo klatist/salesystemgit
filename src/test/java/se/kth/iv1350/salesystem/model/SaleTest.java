@@ -1,5 +1,6 @@
 package se.kth.iv1350.salesystem.model;
 
+import org.junit.jupiter.api.AfterEach;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
@@ -12,13 +13,18 @@ public class SaleTest {
 
     @BeforeEach
     public void setUp(){
-        Item yoghurt = new Item(new ItemInformationDTO("Naturell Yoghurt", new AmountDTO(25.95), 222222, 0.12, "Arla naturell yoghurt. Fetthalt 3%. 1000 gram."));
-        Item baguette = new Item(new ItemInformationDTO("Baguette", new AmountDTO(15.50), 123456, 0.12, "Ljus baguette bakad på vetemjöl, vatten, salt och jäst. Traditionellt franskt recept. Vikt ca 250 gram"));
+        Item yoghurt = new Item(1, new ItemInformationDTO("Naturell Yoghurt", new AmountDTO(25.95), 222222, 0.12, "Arla naturell yoghurt. Fetthalt 3%. 1000 gram."));
+        Item baguette = new Item(1, new ItemInformationDTO("Baguette", new AmountDTO(15.50), 123456, 0.12, "Ljus baguette bakad på vetemjöl, vatten, salt och jäst. Traditionellt franskt recept. Vikt ca 250 gram"));
         
         sale = new Sale();
 
         sale.getCart().add(yoghurt);
         sale.getCart().add(baguette);
+    }
+
+    @AfterEach
+    public void tearDown(){
+        sale = null;
     }
 
     @Test

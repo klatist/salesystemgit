@@ -15,15 +15,6 @@ public class Item {
         this.itemInformation = itemInformation;
 
     }
-    /**
-     * Constructor that creates an item with the deafult value 1.  
-     * @param itemQuantity Represents the quantity of the item.
-     */
-    public Item(ItemInformationDTO itemInformation){
-        this.itemQuantity = 1;
-        this.itemInformation = itemInformation;
-
-    }
 
     public int getItemQuantity(){
         return itemQuantity;

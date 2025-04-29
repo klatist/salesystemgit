@@ -1,7 +1,7 @@
 package se.kth.iv1350.salesystem.view; 
 
 import se.kth.iv1350.salesystem.controller.Controller;
-import se.kth.iv1350.salesystem.model.Amount;
+import se.kth.iv1350.salesystem.model.AmountDTO;
 import se.kth.iv1350.salesystem.model.SaleDTO;
 
 /**
@@ -22,6 +22,7 @@ public class View {
 
     /**
      * Runs the program by making calls to the controller according to flow.
+     * The items to be scanned is placed in the list <code>itemIDs</code>.
      */
     public void runSystem(){
         contr.startSale();
@@ -53,9 +54,11 @@ public class View {
         AmountDTO finalTotalPrice = contr.endSale();
         System.out.println();
         System.out.printf("Total Cost: %.2f%n", finalTotalPrice.getValue());
+
         AmountDTO paidAmount = new AmountDTO(200);
         AmountDTO change = contr.pay(paidAmount);
         System.out.printf("Change: %.2f%n\n", change.getValue());
+        
         contr.printReceipt();
     }
 

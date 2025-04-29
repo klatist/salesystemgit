@@ -23,12 +23,11 @@ public class Controller {
     private ExternalAccounting extAccounting;
     private Printer printer;
 
-    private Register register = new Register();
+    private Register register = new Register(0);
     
     /**
      * This creates an instance of the constructor object. 
-     * @param creator The object which initializes the external systems: Inventory, DiscountDatabase,
-     *  Accounting and Printer. 
+     * @param creator The object which initializes the external systems.
      */
     public Controller(ExternalSystemCreator creator){
         this.extInventory = creator.getExternalInventory();
@@ -94,7 +93,8 @@ public class Controller {
     /**
     * Handles the payment for the sale.
     * Fetches information about the purchase (<code>finalSaleInformation</code>) and updates external systems.
-    * Initiates a <code>CashPayment</code> and calculates the change.
+    * Initiates a <code>CashPayment</code> and get the change.
+    * Updates the register balance with the total price for the sale.
      * @param paidAmount The amount customer gives as payment
      * @return The amount of change to give to the customer.
      */
@@ -108,10 +108,13 @@ public class Controller {
         payment = new CashPayment(sale, paidAmount);
         AmountDTO change = payment.getChange();
 
-        register.updateBalance(finalSaleInformation);
+        register.updateBalance(finalSaleInformation.getRunningTotal());
         return change;
     }
 
+    /**
+     * Prints the receipt with information from the sale.
+     */
     public void printReceipt(){
         payment.printReceipt(printer);
     }

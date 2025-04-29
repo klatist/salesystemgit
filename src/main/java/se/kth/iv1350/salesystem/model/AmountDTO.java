@@ -9,7 +9,7 @@ public class AmountDTO {
     private double value;
 
     /**
-     * Constructor that creates an <code>Amount</code> object with default values for <code>currency</code>
+     * Constructor that creates an <code>AmountDTO</code> object with default values for <code>currency</code>
      * and <code>amount</code> to SEK and 0 respectively.
      */
     public AmountDTO(){
@@ -18,7 +18,7 @@ public class AmountDTO {
     }
 
     /**
-     * Constructor that creates an <code>Amount</code> object without any default values.
+     * Constructor that creates an <code>AmountDTO</code> object without any default values.
      * @param currency Represents the <code>currency</code> that should be used.
      * @param value Represents the <code>amount</code> of money.
      */
@@ -29,8 +29,8 @@ public class AmountDTO {
     }
 
     /**
-     * Constructor that creates an <code>Amount</code> object that has a default value for 
-     * <code>currency> set to SEK but no default value for the <code>amount</code>.
+     * Constructor that creates an <code>AmountDTO</code> object that has a default value for 
+     * <code>currency> set to SEK to default value for the <code>amount</code>.
      * @param value Represents the <code>amount</code> of money.
      */
     public AmountDTO(double value){

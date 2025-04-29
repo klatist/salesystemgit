@@ -1,7 +1,8 @@
 package se.kth.iv1350.salesystem.model;
 
+import org.junit.jupiter.api.AfterEach;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -12,16 +13,16 @@ public class ItemTest {
 
     @BeforeEach
     public void setUp(){
-        itemInformation = new ItemInformationDTO("Naturell Yoghurt", new Amount(25.95), 222222, 0.12, "Arla naturell yoghurt. Fetthalt 3%. 1000 gram.");
-        itemDefaultQuantity = new Item(itemInformation);
+        itemInformation = new ItemInformationDTO("Naturell Yoghurt", new AmountDTO(25.95), 222222, 0.12, "Arla naturell yoghurt. Fetthalt 3%. 1000 gram.");
+        itemDefaultQuantity = new Item(1, itemInformation);
         itemLargerQuantity = new Item(3,itemInformation);
     }
 
-    @Test
-    public void testdefaultQuantityConstructor(){
-        Item item = new Item(itemInformation);
-        int result = item.getItemQuantity();
-        assertEquals(1, result, "the default quantity should be 1");
+    @AfterEach
+    public void tearDown(){
+        itemInformation = null;
+        itemDefaultQuantity = null;
+        itemLargerQuantity = null;
     }
 
     @Test
@@ -74,5 +75,11 @@ public class ItemTest {
     public void testUpdateQuantityInvalidQuantity(){
         itemDefaultQuantity.updateQuantity(-1); 
         assertEquals(1, itemDefaultQuantity.getItemQuantity());
+    }
+
+    @Test 
+    public void testGetItemDTO(){
+        ItemDTO result = itemDefaultQuantity.getItemDTO();
+        assertTrue(result instanceof ItemDTO, "Result should be of object type ItemDTO");
     }
 }
