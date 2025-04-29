@@ -4,7 +4,7 @@ import java.util.Currency;
 /**
  * This class represents an amount of money of a specified currency.
  */
-public class Amount {
+public class AmountDTO {
     private Currency currency;
     private double value;
 
@@ -12,7 +12,7 @@ public class Amount {
      * Constructor that creates an <code>Amount</code> object with default values for <code>currency</code>
      * and <code>amount</code> to SEK and 0 respectively.
      */
-    public Amount(){
+    public AmountDTO(){
         this.currency = Currency.getInstance("SEK");
         this.value = 0;
     }
@@ -22,7 +22,7 @@ public class Amount {
      * @param currency Represents the <code>currency</code> that should be used.
      * @param value Represents the <code>amount</code> of money.
      */
-    public Amount(Currency currency, double value){
+    public AmountDTO(Currency currency, double value){
         this.currency = currency;
         this.value = value;
 
@@ -31,9 +31,9 @@ public class Amount {
     /**
      * Constructor that creates an <code>Amount</code> object that has a default value for 
      * <code>currency> set to SEK but no default value for the <code>amount</code>.
-     * @param amount Represents the <code>amount</code> of money.
+     * @param value Represents the <code>amount</code> of money.
      */
-    public Amount(double value){
+    public AmountDTO(double value){
         this.currency = Currency.getInstance("SEK");
         this.value = value;
     }

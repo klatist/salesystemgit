@@ -28,7 +28,7 @@ public class ItemDTO {
         return itemInformation.getName();
     }
 
-    public Amount getItemPrice(){
+    public AmountDTO getItemPrice(){
         return itemInformation.getPrice();
     }
 

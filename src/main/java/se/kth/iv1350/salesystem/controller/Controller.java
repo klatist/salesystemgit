@@ -5,7 +5,7 @@ import se.kth.iv1350.salesystem.integration.ExternalAccounting;
 import se.kth.iv1350.salesystem.integration.ExternalInventory;
 import se.kth.iv1350.salesystem.integration.ExternalSystemCreator;
 import se.kth.iv1350.salesystem.integration.Printer;
-import se.kth.iv1350.salesystem.model.Amount;
+import se.kth.iv1350.salesystem.model.AmountDTO;
 import se.kth.iv1350.salesystem.model.CashPayment;
 import se.kth.iv1350.salesystem.model.ItemInformationDTO;
 import se.kth.iv1350.salesystem.model.Register;
@@ -85,7 +85,7 @@ public class Controller {
      * @return The total price for the sale
      */
 
-    public Amount endSale()
+    public AmountDTO endSale()
     {
         return sale.getTotalPrice();
     }
@@ -99,14 +99,14 @@ public class Controller {
      * @return The amount of change to give to the customer.
      */
 
-    public Amount pay(Amount paidAmount){
+    public AmountDTO pay(AmountDTO paidAmount){
 
         SaleDTO finalSaleInformation = sale.getSaleInformation();
         extAccounting.updateAccounting(finalSaleInformation);
         extInventory.updateInventory(finalSaleInformation);
 
         payment = new CashPayment(sale, paidAmount);
-        Amount change = payment.getChange();
+        AmountDTO change = payment.getChange();
 
         register.updateBalance(finalSaleInformation);
         return change;

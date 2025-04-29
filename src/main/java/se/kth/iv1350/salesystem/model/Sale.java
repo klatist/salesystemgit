@@ -1,12 +1,10 @@
 package se.kth.iv1350.salesystem.model; 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 
 public class Sale {
     private LocalDateTime dateTime;
-    private Amount totalPrice;
+    private AmountDTO totalPrice;
     private double totalVAT;
     private Cart cart;
     
@@ -17,7 +15,7 @@ public class Sale {
      */
     public Sale() {
         this.dateTime = LocalDateTime.now();  
-        this.totalPrice = new Amount();
+        this.totalPrice = new AmountDTO();
         this.totalVAT = 0.0;
         this.cart = new Cart();
     }
@@ -30,7 +28,7 @@ public class Sale {
         return totalVAT;
     }
 
-    public Amount getTotalPrice(){
+    public AmountDTO getTotalPrice(){
         return totalPrice;
     }
 
@@ -63,7 +61,7 @@ public class Sale {
             calculatedVAT += cartItem.calculateItemVAT();
         }   
         this.totalVAT = calculatedVAT;
-        this.totalPrice = new Amount(totalPriceExcVAT + totalVAT);
+        this.totalPrice = new AmountDTO(totalPriceExcVAT + totalVAT);
 
     }
     

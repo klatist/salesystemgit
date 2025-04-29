@@ -4,7 +4,7 @@ package se.kth.iv1350.salesystem.model;
  */
 public class ItemInformationDTO {
     private String name;
-    private Amount price;
+    private AmountDTO price;
     private int itemID;
     private double vatRate;
     private String description;
@@ -17,7 +17,7 @@ public class ItemInformationDTO {
      * @param vatRate The VAT rate (percentage)
      * @param description A description of the item
      */
-    public ItemInformationDTO(String name, Amount price, int itemID, double vatRate, String description)
+    public ItemInformationDTO(String name, AmountDTO price, int itemID, double vatRate, String description)
     {
         this.name = name;
         this.price = price;
@@ -30,7 +30,7 @@ public class ItemInformationDTO {
         return name;
     }
 
-    public Amount getPrice(){
+    public AmountDTO getPrice(){
         return price;
     }
 

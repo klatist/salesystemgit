@@ -8,10 +8,10 @@ import java.util.List;
 public class ReceiptDTO {
     private LocalDateTime dateTime;
     private List<ItemDTO> cart;
-    private Amount finalTotalPrice;
+    private AmountDTO finalTotalPrice;
     private double finalTotalVAT;
-    private Amount paidAmount;
-    private Amount change;
+    private AmountDTO paidAmount;
+    private AmountDTO change;
 
     /**
      * Creates a <code>ReceiptDTO</code> containing all necessary information for generating a receipt, based on a completed payment.
@@ -34,7 +34,7 @@ public class ReceiptDTO {
         return cart;
     }
 
-    public Amount getFinalTotalPrice(){
+    public AmountDTO getFinalTotalPrice(){
         return finalTotalPrice;
     }
 
@@ -46,11 +46,11 @@ public class ReceiptDTO {
         return finalTotalVAT;
     }
 
-    public Amount getPaidAmount(){
+    public AmountDTO getPaidAmount(){
         return paidAmount;
     }
 
-    public Amount getChange(){
+    public AmountDTO getChange(){
         return change;
     }
     

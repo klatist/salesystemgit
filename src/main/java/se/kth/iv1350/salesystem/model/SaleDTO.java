@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class SaleDTO {
-    private Amount runningTotal;
+    private AmountDTO runningTotal;
     private double runningTotalVAT;
     private List<ItemDTO> currentCart;
 
@@ -16,7 +16,7 @@ public class SaleDTO {
 
     }
 
-    public Amount getRunningTotal(){
+    public AmountDTO getRunningTotal(){
         return runningTotal;
     }
 
