@@ -1,7 +1,10 @@
 package se.kth.iv1350.salesystem.view; 
 
+import java.util.List;
+
 import se.kth.iv1350.salesystem.controller.Controller;
 import se.kth.iv1350.salesystem.model.AmountDTO;
+import se.kth.iv1350.salesystem.model.ItemDTO;
 import se.kth.iv1350.salesystem.model.SaleDTO;
 
 /**
@@ -20,10 +23,28 @@ public class View {
     }
 
 
-    /**
+   /**
+    * Helper method that searches the cart for the item matching the scanned item ID
+    * so the item's information can be printed after scanning.
+    * @param saleInformation Current information about the sale, containing the cart of items
+    * @param scannedItemID ItemID of the just scanned item. 
+    * @return The <code>ItemDTO</code> corresponding to the scanned item ID, or <code>null</code> if no item is found.
+    */
+
+    private ItemDTO getItemFromCart(SaleDTO saleInformation, int scannedItemID){
+        List<ItemDTO> cart = saleInformation.getCurrentCart();
+        for(ItemDTO itemInCart : cart){
+            if(itemInCart.getItemID() == scannedItemID){
+                return itemInCart;
+            }
+        }
+        return null;
+    }
+     /**
      * Runs the program by making calls to the controller according to flow.
      * The items to be scanned is placed in the list <code>itemIDs</code>.
      */
+
     public void runSystem(){
         contr.startSale();
 
@@ -38,10 +59,11 @@ public class View {
 
             if (saleInformation != null)
             {
-                int currentItemPosition = saleInformation.getCurrentCart().size()-1;
-                System.out.println("Item name: " + saleInformation.getCurrentItem(currentItemPosition).getItemName());
-                System.out.println("Item desription: " + saleInformation.getCurrentItem(currentItemPosition).getItemDescription());
-                System.out.println("Item price: " + saleInformation.getCurrentItem(currentItemPosition).getItemValue());
+                ItemDTO currentItem = getItemFromCart(saleInformation,itemIDs[i]);
+
+                System.out.println("Item name: " + currentItem.getItemName());
+                System.out.println("Item desription: " + currentItem.getItemDescription());
+                System.out.println("Item price: " + currentItem.getItemValue());
                 System.out.printf("\nRunning Total: %.2f", saleInformation.getRunningTotalValue());
             }
             else
