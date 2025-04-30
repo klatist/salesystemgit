@@ -79,9 +79,9 @@ public class View {
 
         AmountDTO paidAmount = new AmountDTO(200);
         AmountDTO change = contr.pay(paidAmount);
-        System.out.printf("Change: %.2f%n\n", change.getValue());
         
         contr.printReceipt();
+        System.out.printf("Change: %.2f%n\n", change.getValue());
     }
 
     

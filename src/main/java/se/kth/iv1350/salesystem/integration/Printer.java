@@ -40,6 +40,7 @@ public class Printer {
             receipt.getFinalTotalPrice().getCurrency().toString());
 
         System.out.println();
+        System.out.println("----- END RECEIPT -----");
 
     }
     /**
