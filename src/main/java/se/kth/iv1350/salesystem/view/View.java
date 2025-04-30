@@ -27,8 +27,8 @@ public class View {
     public void runSystem(){
         contr.startSale();
 
-        int[] itemIDs = {123456,121212,654321};
-        int[] quantities = {1, 1, 2};
+        int[] itemIDs = {123456,121212,654321,123456};
+        int[] quantities = {1, 1, 2,2};
 
         System.out.println("---- SALE -----");
 

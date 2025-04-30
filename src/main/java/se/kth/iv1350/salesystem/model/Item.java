@@ -1,7 +1,7 @@
 package se.kth.iv1350.salesystem.model;
 
 
-public class Item {
+class Item {
     private int itemQuantity;
     private ItemInformationDTO itemInformation;
 
@@ -10,33 +10,33 @@ public class Item {
      * @param itemQuantity Represents the quantity of the item.
      * @param itemInformation Represents information about the item such as name and price.
      */
-    public Item(int itemQuantity, ItemInformationDTO itemInformation){
+    Item(int itemQuantity, ItemInformationDTO itemInformation){
         this.itemQuantity = itemQuantity;
         this.itemInformation = itemInformation;
 
     }
 
-    public int getItemQuantity(){
+    int getItemQuantity(){
         return itemQuantity;
     }
 
-    public ItemInformationDTO getItemInformation(){
+    ItemInformationDTO getItemInformation(){
         return itemInformation;
     }
     
-    public double getItemValue(){
+    double getItemValue(){
         return itemInformation.getPrice().getValue();
     }
 
-    public int getItemID(){
+    int getItemID(){
         return itemInformation.getID();
     }
 
-    public double getItemVATRate(){
+    double getItemVATRate(){
         return itemInformation.getVATRate();
     }
 
-    public ItemDTO getItemDTO(){
+    ItemDTO getItemDTO(){
         ItemDTO itemDTO = new ItemDTO(this);
         return itemDTO;
     }
