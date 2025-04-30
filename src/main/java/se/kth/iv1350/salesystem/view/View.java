@@ -63,7 +63,7 @@ public class View {
 
                 System.out.println("Item name: " + currentItem.getItemName());
                 System.out.println("Item desription: " + currentItem.getItemDescription());
-                System.out.println("Item price: " + currentItem.getItemValue());
+                System.out.printf("Item price: %.2f", currentItem.getItemValue());
                 System.out.printf("\nRunning Total: %.2f", saleInformation.getRunningTotalValue());
             }
             else
