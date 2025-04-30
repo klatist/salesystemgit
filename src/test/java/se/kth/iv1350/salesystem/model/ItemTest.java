@@ -48,13 +48,13 @@ public class ItemTest {
 }
 
     @Test
-    public void testcalculateItemVATDefaultCuantity(){
+    public void testcalculateItemVATDefaultQuantity(){
         double result = itemDefaultQuantity.calculateItemVAT();
         assertEquals(itemDefaultQuantity.getItemInformation().getVATRate() * itemDefaultQuantity.getItemValue(), result);
     }
     
     @Test
-    public void testcalculateItemVATLargerCuantity(){
+    public void testcalculateItemVATLargerQuantity(){
         double result = itemLargerQuantity.calculateItemVAT();
         assertEquals(itemLargerQuantity.getItemInformation().getVATRate() * itemLargerQuantity.getItemValue()* 3, result);
     }
