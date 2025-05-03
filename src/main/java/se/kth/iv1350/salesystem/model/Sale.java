@@ -92,7 +92,7 @@ public class Sale {
         int cartSize = cart.getCart().size()-1;
         Item currentItem = cart.getItem(position);
 
-        if (position <= cartSize|| position >= 0){
+        if (position <= cartSize || position >= 0){
             currentItem.updateQuantity(itemQuantity);
             updateTotalPriceAndVAT();
         }

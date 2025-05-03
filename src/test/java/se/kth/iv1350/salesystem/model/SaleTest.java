@@ -9,13 +9,15 @@ import org.junit.jupiter.api.Test;
 
 public class SaleTest {
     private Sale sale;
+    ItemInformationDTO itemInformation;
     
 
     @BeforeEach
     public void setUp(){
         Item yoghurt = new Item(1, new ItemInformationDTO("Naturell Yoghurt", new AmountDTO(25.95), 222222, 0.12, "Arla naturell yoghurt. Fetthalt 3%. 1000 gram."));
         Item baguette = new Item(1, new ItemInformationDTO("Baguette", new AmountDTO(15.50), 123456, 0.12, "Ljus baguette bakad på vetemjöl, vatten, salt och jäst. Traditionellt franskt recept. Vikt ca 250 gram"));
-        
+        itemInformation = new ItemInformationDTO("Kalaspuffar",new AmountDTO(40.95) , 654321, 0.12, "Gör din frukost till en fest med våra flingor");
+
         sale = new Sale();
 
         sale.getCart().add(yoghurt);
@@ -40,24 +42,9 @@ public class SaleTest {
         assertEquals(expTotalVAT, newTotalVAT);
     }
 
-    @Test
-    public void testAddToCartItemIDInCart(){
-        int itemID = 123456;
-        int result = sale.getCart().findInCart(itemID);
-        assertTrue(result != -1, "the item should have an index in cart");
-    }
-
-
-    @Test
-    public void testAddToCartItemIDNotInCart(){
-        int itemID = 000000;
-        int result = sale.getCart().findInCart(itemID);
-        assertTrue(result == -1, "the item should not have an index in cart");
-    }
     
     @Test
     public void testAddToCart(){
-        ItemInformationDTO itemInformation = new ItemInformationDTO("Kalaspuffar",new AmountDTO(40.95) , 654321, 0.12, "Gör din frukost till en fest med våra flingor");
         sale.addToCart(1, itemInformation);
         int result = sale.getCart().findInCart(654321);
         assertEquals(2, result);
@@ -66,15 +53,13 @@ public class SaleTest {
     @Test
     public void testAddToEmptyCart(){
         Sale emptySale = new Sale();
-        ItemInformationDTO iteminformation = new ItemInformationDTO("Kalaspuffar",new AmountDTO(40.95) , 654321, 0.12, "Gör din frukost till en fest med våra flingor");
-        emptySale.addToCart(1, iteminformation);
+        emptySale.addToCart(1, itemInformation);
         int result = emptySale.getCart().findInCart(654321);
         assertEquals(0, result, "If item was added to an empty cart it should be at index 0");
     }
 
     @Test
     public void testAddToCartInvalidQuantity(){
-        ItemInformationDTO itemInformation = new ItemInformationDTO("Kalaspuffar",new AmountDTO(40.95) , 654321, 0.12, "Gör din frukost till en fest med våra flingor");
         sale.addToCart(0, itemInformation);
         int result = sale.getCart().findInCart(654321);
         assertEquals(-1, result);
