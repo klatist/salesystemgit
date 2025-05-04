@@ -1,5 +1,8 @@
 package se.kth.iv1350.salesystem.model;
 
+/**
+ * This class represents the items that has been scanned during sale.
+ */
 
 class Item {
     private int itemQuantity;

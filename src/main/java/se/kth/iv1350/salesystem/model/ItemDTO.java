@@ -1,5 +1,8 @@
 package se.kth.iv1350.salesystem.model;
 
+/**
+ * This class holds informatiom about the items that has been scanned.
+ */
 public class ItemDTO {
     
     private int itemQuantity;

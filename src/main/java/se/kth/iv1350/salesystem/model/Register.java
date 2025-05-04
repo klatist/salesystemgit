@@ -1,6 +1,6 @@
 package se.kth.iv1350.salesystem.model;
 /**
- * Represent the physical register that keeps the payment for a sale and holds the current balance. 
+ * Represents the physical register that keeps the payment for a sale and holds the current balance. 
  */
 public class Register {
     private AmountDTO balance;

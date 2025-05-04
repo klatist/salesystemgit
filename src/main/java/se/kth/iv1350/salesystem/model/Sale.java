@@ -1,6 +1,8 @@
 package se.kth.iv1350.salesystem.model; 
 import java.time.LocalDateTime;
-
+/**
+ * This class represents and handles the ongoing sale 
+ */
 
 public class Sale {
     private LocalDateTime dateTime;

@@ -2,7 +2,11 @@ package se.kth.iv1350.salesystem.model;
 
 
 import java.util.List;
-import java.util.ArrayList;
+
+/**
+ * This class holds information about the sale. A new one is created 
+ * whenever the information about the sale is updated.
+ */
 
 public class SaleDTO {
     private AmountDTO runningTotal;

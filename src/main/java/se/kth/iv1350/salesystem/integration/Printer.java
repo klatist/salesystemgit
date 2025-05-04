@@ -11,7 +11,7 @@ import se.kth.iv1350.salesystem.model.ReceiptDTO;
 public class Printer {
 
     /**
-     * Prints the recipt containing time of sale, list of items, total amount and VAT, the amount paid and given change.
+     * Prints the receipt containing time of sale, list of items, total amount and VAT, the amount paid and given change.
      * @param receipt <code>ReceeiptDTO</code> containing all information about the sale. 
      */
 
@@ -45,7 +45,7 @@ public class Printer {
     }
     /**
      * Helpmethod to print the name, quantity, price, combined price and currency of each item .  
-     * @param cart Represent the list of bought items with quantities. 
+     * @param cart Represents the list of bought items with quantities. 
      */
     private void printCart(List<ItemDTO> cart){
         for(ItemDTO item : cart){
