@@ -26,60 +26,61 @@ public class ItemTest {
     }
 
     @Test
-    public void testConstructor(){
-        Item item = new Item(3,itemInformation);
-        int result = item.getItemQuantity();
-        assertEquals(3, result, "the default quantity should be 3");
-    }
-
-    @Test
-    public void testCalculatePriceDefaultQuantity(){
-        double result = itemDefaultQuantity.calculateItemPrice();
-        double expPrice = 1 * itemDefaultQuantity.getItemValue();
-        assertEquals(expPrice, result);
-    }
-
-
-    @Test
-    public void testCalculatePriceLargerQuantity(){
-        double result = itemLargerQuantity.calculateItemPrice();
-        double expPrice = 3 * itemLargerQuantity.getItemValue();
-        assertEquals(expPrice, result);
+public void testConstructor() {
+    Item item = new Item(3, itemInformation);
+    int result = item.getItemQuantity();
+    assertEquals(3, result, "Constructor should set item quantity to 3");
 }
 
-    @Test
-    public void testcalculateItemVATDefaultQuantity(){
-        double result = itemDefaultQuantity.calculateItemVAT();
-        assertEquals(itemDefaultQuantity.getItemInformation().getVATRate() * itemDefaultQuantity.getItemValue(), result);
-    }
-    
-    @Test
-    public void testcalculateItemVATLargerQuantity(){
-        double result = itemLargerQuantity.calculateItemVAT();
-        assertEquals(itemLargerQuantity.getItemInformation().getVATRate() * itemLargerQuantity.getItemValue()* 3, result);
-    }
+@Test
+public void testCalculatePriceDefaultQuantity() {
+    double result = itemDefaultQuantity.calculateItemPrice();
+    double expectedPrice = 1 * itemDefaultQuantity.getItemValue();
+    assertEquals(expectedPrice, result, 0.001, "Price for default quantity (1) is incorrect");
+}
 
-    @Test
-    public void testUpdateQuantityAddItem(){
-        itemDefaultQuantity.updateQuantity(2); 
-        assertEquals(3, itemDefaultQuantity.getItemQuantity());
-    }
+@Test
+public void testCalculatePriceLargerQuantity() {
+    double result = itemLargerQuantity.calculateItemPrice();
+    double expectedPrice = 3 * itemLargerQuantity.getItemValue();
+    assertEquals(expectedPrice, result, 0.001, "Price for quantity 3 is incorrect");
+}
 
-    @Test
-    public void testUpdateQuantityRemoveItem(){
-        itemLargerQuantity.updateQuantity(-1); 
-        assertEquals(2, itemLargerQuantity.getItemQuantity());
-    }
+@Test
+public void testCalculateItemVATDefaultQuantity() {
+    double expectedVAT = itemDefaultQuantity.getItemInformation().getVATRate() * itemDefaultQuantity.getItemValue();
+    double result = itemDefaultQuantity.calculateItemVAT();
+    assertEquals(expectedVAT, result, 0.001, "VAT calculation for quantity 1 is incorrect");
+}
 
-    @Test
-    public void testUpdateQuantityInvalidQuantity(){
-        itemDefaultQuantity.updateQuantity(-1); 
-        assertEquals(1, itemDefaultQuantity.getItemQuantity());
-    }
+@Test
+public void testCalculateItemVATLargerQuantity() {
+    double expectedVAT = itemLargerQuantity.getItemInformation().getVATRate() * itemLargerQuantity.getItemValue() * 3;
+    double result = itemLargerQuantity.calculateItemVAT();
+    assertEquals(expectedVAT, result, 0.001, "VAT calculation for quantity 3 is incorrect");
+}
 
-    @Test 
-    public void testGetItemDTO(){
-        ItemDTO result = itemDefaultQuantity.getItemDTO();
-        assertTrue(result instanceof ItemDTO, "Result should be of object type ItemDTO");
-    }
+@Test
+public void testUpdateQuantityAddItem() {
+    itemDefaultQuantity.updateQuantity(2); 
+    assertEquals(3, itemDefaultQuantity.getItemQuantity(), "Quantity should be updated to 3 after adding 2");
+}
+
+@Test
+public void testUpdateQuantityRemoveItem() {
+    itemLargerQuantity.updateQuantity(-1); 
+    assertEquals(2, itemLargerQuantity.getItemQuantity(), "Quantity should be decreased to 2 after removing 1");
+}
+
+@Test
+public void testUpdateQuantityInvalidQuantity() {
+    itemDefaultQuantity.updateQuantity(-1); 
+    assertEquals(1, itemDefaultQuantity.getItemQuantity(), "Quantity should remain 1 when trying to reduce below zero");
+}
+
+@Test 
+public void testGetItemDTO() {
+    ItemDTO result = itemDefaultQuantity.getItemDTO();
+    assertTrue(result instanceof ItemDTO, "Method should return an instance of ItemDTO");
+}
 }

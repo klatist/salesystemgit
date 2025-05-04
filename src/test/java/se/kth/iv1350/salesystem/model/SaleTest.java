@@ -30,68 +30,66 @@ public class SaleTest {
     }
 
     @Test
-    public void testUpdateTotalPriceAndVAT(){
-        sale.updateTotalPriceAndVAT();
-        double newTotalPrice  = sale.getTotalPriceValue();
-        double newTotalVAT = sale.getTotalVAT();
+public void testUpdateTotalPriceAndVAT() {
+    sale.updateTotalPriceAndVAT();
+    double newTotalPrice  = sale.getTotalPriceValue();
+    double newTotalVAT = sale.getTotalVAT();
 
-        double expTotalVAT = 25.95*0.12 + 15.50*0.12;
-        double expTotalPrice =  25.95 + 15.50 + expTotalVAT;
-        
-        assertEquals(expTotalPrice, newTotalPrice);
-        assertEquals(expTotalVAT, newTotalVAT);
-    }
+    double expTotalVAT = 25.95 * 0.12 + 15.50 * 0.12;
+    double expTotalPrice = 25.95 + 15.50 + expTotalVAT;
 
-    
-    @Test
-    public void testAddToCart(){
-        sale.addToCart(1, itemInformation);
-        int result = sale.getCart().findInCart(654321);
-        assertEquals(2, result);
-    }
+    assertEquals(expTotalPrice, newTotalPrice, 0.001, "Total price including VAT should match expected value");
+    assertEquals(expTotalVAT, newTotalVAT, 0.001, "Total VAT should match expected value");
+}
 
     @Test
-    public void testAddToEmptyCart(){
-        Sale emptySale = new Sale();
-        emptySale.addToCart(1, itemInformation);
-        int result = emptySale.getCart().findInCart(654321);
-        assertEquals(0, result, "If item was added to an empty cart it should be at index 0");
+    public void testAddToCart() {
+    sale.addToCart(1, itemInformation);
+    int result = sale.getCart().findInCart(654321);
+    assertEquals(2, result, "Item should be added at index 2 in the cart");
     }
 
     @Test
-    public void testAddToCartInvalidQuantity(){
-        sale.addToCart(0, itemInformation);
-        int result = sale.getCart().findInCart(654321);
-        assertEquals(-1, result);
-
+    public void testAddToEmptyCart() {
+    Sale emptySale = new Sale();
+    emptySale.addToCart(1, itemInformation);
+    int result = emptySale.getCart().findInCart(654321);
+    assertEquals(0, result, "Item added to empty cart should be at index 0");
     }
 
     @Test
-    public void testUpdateQuantity(){
-        sale.updateQuantityInCart(0, 1);
-        int result = sale.getCart().getItem(0).getItemQuantity();
-        assertEquals(2, result);
+    public void testAddToCartInvalidQuantity() {
+    sale.addToCart(0, itemInformation);
+    int result = sale.getCart().findInCart(654321);
+    assertEquals(-1, result, "Item with quantity 0 should not be added to cart");
     }
 
     @Test
-    public void testUpdateQuantityQuantityZero(){
-        sale.updateQuantityInCart(0, 0);
-        int result = sale.getCart().getItem(0).getItemQuantity();
-        assertEquals(1, result);
+    public void testUpdateQuantity() {
+    sale.updateQuantityInCart(0, 1);
+    int result = sale.getCart().getItem(0).getItemQuantity();
+    assertEquals(2, result, "Item quantity should be updated to 2 after adding 1");
+    }
+
+    @Test
+    public void testUpdateQuantityQuantityZero() {
+    sale.updateQuantityInCart(0, 0);
+    int result = sale.getCart().getItem(0).getItemQuantity();
+    assertEquals(1, result, "Item quantity should remain unchanged when 0 is added");
     }
 
     @Disabled
     @Test
-    public void testUpdateQuantityInvalidPosition(){
-        sale.updateQuantityInCart(-1, 0);
-        int result = sale.getCart().getItem(-1).getItemQuantity();
-        assertEquals(1, result);
+    public void testUpdateQuantityInvalidPosition() {
+    sale.updateQuantityInCart(-1, 0);
+    int result = sale.getCart().getItem(-1).getItemQuantity();
+    assertEquals(1, result, "Invalid index should not update quantity");
     }
 
     @Test
-    public void testUpdateQuantityInvalidQuantity(){
-        sale.updateQuantityInCart(0, -1);
-        int result = sale.getCart().getItem(0).getItemQuantity();
-        assertEquals(1, result);
+    public void testUpdateQuantityInvalidQuantity() {
+    sale.updateQuantityInCart(0, -1);
+    int result = sale.getCart().getItem(0).getItemQuantity();
+    assertEquals(1, result, "Item quantity should remain unchanged when negative quantity causes invalid state");
     }
 }

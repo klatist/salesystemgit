@@ -35,7 +35,7 @@ public class CartTest {
     @Test
     public void testFindInCartItemExistsInCart(){
        int result = cart.findInCart(222222);
-        assertEquals(0, result, "Yoghurt should exist at position 0");
+        assertEquals(0, result, "The item with id 222222 (yoghurt) should exist at position 0");
     }
 
     @Test
