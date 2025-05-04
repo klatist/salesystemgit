@@ -62,7 +62,7 @@ public class View {
                 ItemDTO currentItem = getItemFromCart(saleInformation,itemIDs[i]);
 
                 System.out.println("Item name: " + currentItem.getItemName());
-                System.out.println("Item desription: " + currentItem.getItemDescription());
+                System.out.println("Item description: " + currentItem.getItemDescription());
                 System.out.printf("Item price: %.2f", currentItem.getItemValue());
                 System.out.printf("\nRunning Total: %.2f", saleInformation.getRunningTotalValue());
             }
