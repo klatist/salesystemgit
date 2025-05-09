@@ -29,7 +29,7 @@ public class Cart {
     
     }
 
-    public List<Item> getCart(){
+    public List<Item> getCartList(){
         return this.cart;
     }
 
@@ -45,25 +45,5 @@ public class Cart {
         return itemDTOs;
     }
 
-    /**
-     * Search for an already existing item in cart
-     * @param scannedItemID Represents the item id the cashier recently scanned
-     * @return return the item <code>position</code> in <code>cart</code> if found, 
-     *         if not found -1 is returned.
-     */
-    public int findInCart(int scannedItemID){
-        int position = -1;
-
-        for(int i = 0; i < cart.size(); i++){
-            int existingItemID = cart.get(i).getItemID();
-
-            if(scannedItemID == existingItemID)
-            {
-                position = i;
-                return position;
-            }
-        }
-
-        return position;
-    }
+    
 }

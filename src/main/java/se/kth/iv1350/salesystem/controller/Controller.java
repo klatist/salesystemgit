@@ -58,7 +58,7 @@ public class Controller {
      */
     public SaleDTO scanItem(int itemID, int itemQuantity){
 
-        int position = sale.getCart().findInCart(itemID);
+        int position = sale.findInCart(itemID);
 
         if(position == -1){
             ItemInformationDTO itemInformation = extInventory.fetchItemInformation(itemID);

@@ -57,7 +57,7 @@ public class Sale {
         double totalPriceExcVAT = 0.0;
         double calculatedVAT = 0.0;
 
-        for(Item cartItem : cart.getCart())
+        for(Item cartItem : cart.getCartList())
         {
             totalPriceExcVAT += cartItem.calculateItemPrice();
             calculatedVAT += cartItem.calculateItemVAT();
@@ -65,6 +65,31 @@ public class Sale {
         this.totalVAT = calculatedVAT;
         this.totalPrice = new AmountDTO(totalPriceExcVAT + totalVAT);
 
+    }
+
+    /**
+     * Search for an already existing item in cart
+     * @param scannedItemID Represents the item id the cashier recently scanned
+     * @return return the item <code>position</code> in <code>cart</code> if found, 
+     *         if not found -1 is returned.
+     */
+    public int findInCart(int scannedItemID)
+    {
+        int position = -1;
+
+        int cartSize = cart.getCartList().size();
+
+        for(int i = 0; i < cartSize; i++){
+            int existingItemID = cart.getItem(i).getItemID();
+
+            if(scannedItemID == existingItemID)
+            {
+                position = i;
+                return position;
+            }
+        }
+
+        return position;
     }
     
     /**
@@ -91,7 +116,7 @@ public class Sale {
      * @param itemQuantity Represents the quantity of the item to be added to the cart.
      */
     public void updateQuantityInCart(int position, int itemQuantity){
-        int cartSize = cart.getCart().size()-1;
+        int cartSize = cart.getCartList().size()-1;
         Item currentItem = cart.getItem(position);
 
         if (position <= cartSize || position >= 0){
