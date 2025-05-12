@@ -60,7 +60,7 @@ public class Controller {
      * @param itemID The identifier for the item to be scanned.
      * @param itemQuantity The quantity of the item to be added to the cart.
      * @throws ItemIdentifierException  if the itemID does not exist in inventory.
-     * @throws OperationFailedException  if the database for some reason could not be called.
+     * @throws OperationFailedException  if the database for some reason could not be called as expected.
      * @return A <code>SaleDTO</code> representing the sale in the moment after the item is scanned, or <code>null</code> if the item is not found in inventory.
      */
     public SaleDTO scanItem(int itemID, int itemQuantity) throws ItemIdentifierException, OperationFailedException{
