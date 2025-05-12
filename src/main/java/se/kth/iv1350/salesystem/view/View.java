@@ -3,6 +3,8 @@ package se.kth.iv1350.salesystem.view;
 import java.util.List;
 
 import se.kth.iv1350.salesystem.controller.Controller;
+import se.kth.iv1350.salesystem.exceptions.ItemIdentifierException;
+import se.kth.iv1350.salesystem.exceptions.OperationFailedException;
 import se.kth.iv1350.salesystem.model.AmountDTO;
 import se.kth.iv1350.salesystem.model.ItemDTO;
 import se.kth.iv1350.salesystem.model.SaleDTO;
@@ -14,6 +16,7 @@ import se.kth.iv1350.salesystem.model.SaleDTO;
 public class View {
 
     private Controller contr;
+    private ErrorMessageHandler errorMessageHandler = new ErrorMessageHandler();
     /**
      * Creates the view object.
      * @param contr The program's controller
@@ -48,28 +51,35 @@ public class View {
     public void runSystem(){
         contr.startSale();
 
-        int[] itemIDs = {123456,654321,123456};
-        int[] quantities = {1, 2,2};
+        int[] itemIDs = {123456,654321,123456,000000};
+        int[] quantities = {1, 2,2, 1};
 
         System.out.println("---- SALE -----");
 
         for(int i = 0; i < itemIDs.length; i++)
         {
-            SaleDTO saleInformation = contr.scanItem(itemIDs[i], quantities[i]);
-
-            if (saleInformation != null)
+            try 
             {
+                SaleDTO saleInformation = contr.scanItem(itemIDs[i], quantities[i]);
+
                 ItemDTO currentItem = getItemFromCart(saleInformation,itemIDs[i]);
 
                 System.out.println("Item name: " + currentItem.getItemName());
                 System.out.println("Item description: " + currentItem.getItemDescription());
                 System.out.printf("Item price: %.2f", currentItem.getItemValue());
                 System.out.printf("\nRunning Total: %.2f", saleInformation.getRunningTotalValue());
-            }
-            else
+            } 
+
+            catch (ItemIdentifierException exc) 
             {
-                System.out.println("itemID: " + itemIDs[i] + " does not match an existing item");
+                errorMessageHandler.showErrorMessage("Item could not be scanned, since itemID does not exist in inventory");
             }
+
+            catch(OperationFailedException exc)
+            {
+                
+            }
+    
             System.out.println("\n");
         }
 

@@ -3,6 +3,8 @@ package se.kth.iv1350.salesystem.integration;
 import java.util.ArrayList;
 import java.util.List;
 
+import se.kth.iv1350.salesystem.exceptions.DatabaseFailureException;
+import se.kth.iv1350.salesystem.exceptions.ItemIdentifierException;
 import se.kth.iv1350.salesystem.model.AmountDTO;
 import se.kth.iv1350.salesystem.model.ItemInformationDTO;
 import se.kth.iv1350.salesystem.model.SaleDTO;
@@ -34,15 +36,28 @@ public class ExternalInventory {
      * @param itemID the identifier for the item. 
      * @return if the itemID match an item in the inventory the <code>ItemInformationDTO</code> is returned. If there is no match <code>null</code> is returned
      */
-    public ItemInformationDTO fetchItemInformation(int itemID){
-        for(ItemInformationDTO itemInformation : inventory)
+    public ItemInformationDTO fetchItemInformation(int itemID) throws ItemIdentifierException, DatabaseFailureException
+    {
+        
+        ItemInformationDTO iteminformation = null;
+
+        if(itemID == 000000){
+            throw new DatabaseFailureException("Database can not be called.");
+        }
+
+        for(ItemInformationDTO itemInInventory : inventory)
         {
-            if (itemInformation.getID() == itemID)
+            if (itemInInventory.getID() == itemID)
             {
-                return itemInformation;
+                iteminformation = itemInInventory;
             }
         }
-        return null;
+        
+        if(iteminformation == null){
+            throw new ItemIdentifierException(itemID);
+        }
+
+        return iteminformation;
     }
 
     /**
