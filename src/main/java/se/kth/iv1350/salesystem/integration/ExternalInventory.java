@@ -3,8 +3,6 @@ package se.kth.iv1350.salesystem.integration;
 import java.util.ArrayList;
 import java.util.List;
 
-import se.kth.iv1350.salesystem.exceptions.DatabaseFailureException;
-import se.kth.iv1350.salesystem.exceptions.ItemIdentifierException;
 import se.kth.iv1350.salesystem.model.AmountDTO;
 import se.kth.iv1350.salesystem.model.ItemInformationDTO;
 import se.kth.iv1350.salesystem.model.SaleDTO;

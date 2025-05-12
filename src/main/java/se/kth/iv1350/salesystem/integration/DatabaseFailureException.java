@@ -1,4 +1,4 @@
-package se.kth.iv1350.salesystem.exceptions;
+package se.kth.iv1350.salesystem.integration;
 
 /**
  * Thrown when the database can not be called.

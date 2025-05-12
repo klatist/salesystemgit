@@ -1,12 +1,11 @@
 package se.kth.iv1350.salesystem.controller;
 
-import se.kth.iv1350.salesystem.exceptions.DatabaseFailureException;
-import se.kth.iv1350.salesystem.exceptions.ItemIdentifierException;
-import se.kth.iv1350.salesystem.exceptions.OperationFailedException;
+import se.kth.iv1350.salesystem.integration.DatabaseFailureException;
 import se.kth.iv1350.salesystem.integration.DiscountDatabase;
 import se.kth.iv1350.salesystem.integration.ExternalAccounting;
 import se.kth.iv1350.salesystem.integration.ExternalInventory;
 import se.kth.iv1350.salesystem.integration.ExternalSystemCreator;
+import se.kth.iv1350.salesystem.integration.ItemIdentifierException;
 import se.kth.iv1350.salesystem.integration.Printer;
 import se.kth.iv1350.salesystem.model.AmountDTO;
 import se.kth.iv1350.salesystem.model.CashPayment;
@@ -14,7 +13,8 @@ import se.kth.iv1350.salesystem.model.ItemInformationDTO;
 import se.kth.iv1350.salesystem.model.Register;
 import se.kth.iv1350.salesystem.model.Sale;
 import se.kth.iv1350.salesystem.model.SaleDTO;
-import se.kth.iv1350.salesystem.exceptions.*;;
+import se.kth.iv1350.salesystem.util.LogHandler;
+;
 
 /**
  The controller is a middle-layer between view to model and integration. The calls methods in model and integration 
@@ -28,6 +28,7 @@ public class Controller {
     private Printer printer;
 
     private Register register = new Register(0);
+    private LogHandler logger = new LogHandler();
     
     /**
      * This creates an instance of the constructor object. 
@@ -58,6 +59,8 @@ public class Controller {
      *
      * @param itemID The identifier for the item to be scanned.
      * @param itemQuantity The quantity of the item to be added to the cart.
+     * @throws ItemIdentifierException  if the itemID does not exist in inventory.
+     * @throws OperationFailedException  if the database for some reason could not be called.
      * @return A <code>SaleDTO</code> representing the sale in the moment after the item is scanned, or <code>null</code> if the item is not found in inventory.
      */
     public SaleDTO scanItem(int itemID, int itemQuantity) throws ItemIdentifierException, OperationFailedException{
@@ -75,15 +78,17 @@ public class Controller {
             else{
                 sale.updateQuantityInCart(position, itemQuantity);
             }
+
+            SaleDTO saleInformation = sale.getSaleInformation();
+            return saleInformation; 
         } 
 
         catch (DatabaseFailureException databExc) 
         {
-            throw new OperationFailedException("Could not scan item", databExc);
+            logger.log(databExc);
+            throw new OperationFailedException(databExc);
         }
-        
-        SaleDTO saleInformation = sale.getSaleInformation();
-        return saleInformation; 
+    
     }
 
     /**

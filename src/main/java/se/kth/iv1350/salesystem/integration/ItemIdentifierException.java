@@ -1,4 +1,4 @@
-package se.kth.iv1350.salesystem.exceptions;
+package se.kth.iv1350.salesystem.integration;
 
 /**
  * Thrown when trying to scan an item with an itemID that does not exist in inventory.
