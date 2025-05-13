@@ -11,6 +11,7 @@ import se.kth.iv1350.salesystem.model.AmountDTO;
 import se.kth.iv1350.salesystem.model.CashPayment;
 import se.kth.iv1350.salesystem.model.ItemInformationDTO;
 import se.kth.iv1350.salesystem.model.Register;
+import se.kth.iv1350.salesystem.model.RevenueObserver;
 import se.kth.iv1350.salesystem.model.Sale;
 import se.kth.iv1350.salesystem.model.SaleDTO;
 import se.kth.iv1350.salesystem.util.LogHandler;
@@ -43,6 +44,10 @@ public class Controller {
 
     private Sale sale; 
     private CashPayment payment;
+
+    public void addRevenueObserver(RevenueObserver observer){
+        register.addRevenueObserver(observer);
+    }
 
     /**
      * Creates the <code>sale</code> object to represent and hold information about the sale. 
@@ -79,15 +84,21 @@ public class Controller {
                 sale.updateQuantityInCart(position, itemQuantity);
             }
 
-            SaleDTO saleInformation = sale.getSaleInformation();
-            return saleInformation; 
         } 
-
+        
         catch (DatabaseFailureException databExc) 
         {
-            logger.log(databExc);
+            logger.logException(databExc);
             throw new OperationFailedException(databExc);
         }
+
+        catch(Exception exc)
+        {
+            logger.logException(exc);
+        }
+
+        SaleDTO saleInformation = sale.getSaleInformation();
+        return saleInformation; 
     
     }
 

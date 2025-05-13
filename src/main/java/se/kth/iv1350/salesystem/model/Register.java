@@ -29,7 +29,7 @@ public class Register {
         
     }
 
-    private void addRevenueObserver(RevenueObserver observer){
+    public void addRevenueObserver(RevenueObserver observer){
         revenueObservers.add(observer);
     }
 

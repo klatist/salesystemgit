@@ -8,6 +8,8 @@ import se.kth.iv1350.salesystem.integration.ItemIdentifierException;
 import se.kth.iv1350.salesystem.model.AmountDTO;
 import se.kth.iv1350.salesystem.model.ItemDTO;
 import se.kth.iv1350.salesystem.model.SaleDTO;
+import se.kth.iv1350.salesystem.util.LogHandler;
+import se.kth.iv1350.salesystem.util.TotalRevenueFileOutput;
 
 /**
  * The view class is a substitute for the user interface and makes calls to the controller to perform
@@ -17,6 +19,9 @@ public class View {
 
     private Controller contr;
     private ErrorMessageHandler errorMessageHandler = new ErrorMessageHandler();
+    private LogHandler exceptionLogger = new LogHandler();
+    private TotalRevenueView revenueView = new TotalRevenueView();
+    private TotalRevenueFileOutput revenueFileOutput = new TotalRevenueFileOutput();
     /**
      * Creates the view object.
      * @param contr The program's controller
@@ -49,6 +54,9 @@ public class View {
      */
 
     public void runSystem(){
+        contr.addRevenueObserver(revenueFileOutput);
+        contr.addRevenueObserver(revenueView);
+        
         contr.startSale();
 
         int[] itemIDs = {123456,654321,123456,000000};
@@ -78,6 +86,12 @@ public class View {
             catch(OperationFailedException exc)
             {
                 errorMessageHandler.showErrorMessage("System is unavailable");
+            }
+
+            catch(Exception exc)
+            {
+                errorMessageHandler.showErrorMessage("Failed to scan item. Please try again.");
+                exceptionLogger.logException(exc);
             }
     
             System.out.println("\n");

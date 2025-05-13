@@ -7,33 +7,35 @@ import java.time.format.DateTimeFormatter;
 
 
 public class LogHandler {
-    private static final String FILE_NAME = "salesystem-log.txt";
+    private static final String EXCEPTION_FILE_NAME = "saleexception-log.txt";
+    
 
-    private PrintWriter logFile;
+    private PrintWriter exceptionLogFile;
 
     public LogHandler(){
         try 
         {
-            logFile = new PrintWriter(FILE_NAME);
+            exceptionLogFile = new PrintWriter(EXCEPTION_FILE_NAME);
+            
         } 
         catch (IOException ioExc) 
         {
             System.out.println("Could not create log file");
             ioExc.printStackTrace();
         }
-
     }
 
-    public void log(Exception exc){
+    public void logException(Exception exc){
         StringBuilder logMessageBuilder = new StringBuilder();
         logMessageBuilder.append("At ").append(setTime());
         logMessageBuilder.append(", Following exception was thrown: ");
         logMessageBuilder.append(exc.getMessage());
-        logFile.println(logMessageBuilder);
+        exceptionLogFile.println(logMessageBuilder);
         System.out.println("\n");
 
     }
 
+    
     private String setTime(){
         LocalDateTime time = LocalDateTime.now();
         DateTimeFormatter formatter =  DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
