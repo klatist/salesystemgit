@@ -14,7 +14,7 @@ import se.kth.iv1350.salesystem.model.Register;
 import se.kth.iv1350.salesystem.model.RevenueObserver;
 import se.kth.iv1350.salesystem.model.Sale;
 import se.kth.iv1350.salesystem.model.SaleDTO;
-import se.kth.iv1350.salesystem.util.LogHandler;
+import se.kth.iv1350.salesystem.util.ExceptionLogger;
 ;
 
 /**
@@ -29,7 +29,7 @@ public class Controller {
     private Printer printer;
 
     private Register register = new Register(0);
-    private LogHandler logger = new LogHandler();
+    private ExceptionLogger logger = new ExceptionLogger();
     
     /**
      * This creates an instance of the constructor object. 

@@ -3,8 +3,12 @@ package se.kth.iv1350.salesystem.view;
 import se.kth.iv1350.salesystem.model.AmountDTO;
 import se.kth.iv1350.salesystem.model.RevenueObserver;
 
-class TotalRevenueView implements RevenueObserver{
+public class TotalRevenueView implements RevenueObserver{
     private AmountDTO totalRevenue;
+
+    public TotalRevenueView(){
+        totalRevenue = new AmountDTO();
+    }
 
     @Override
     public void updateTotalRevenue(AmountDTO saleRevenue){
@@ -15,7 +19,7 @@ class TotalRevenueView implements RevenueObserver{
     }
 
     private void printTotalRevenue(){
-        System.out.printf("\n Total Revenue: %.2f %s", 
+        System.out.printf("\n Total Revenue: %.2f %s\n", 
             totalRevenue.getValue(),
             totalRevenue.getCurrency().toString());
     }

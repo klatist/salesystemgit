@@ -2,20 +2,20 @@ package se.kth.iv1350.salesystem.util;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.FileWriter;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+import se.kth.iv1350.salesystem.model.AmountDTO;
 
-public class LogHandler {
-    private static final String EXCEPTION_FILE_NAME = "saleexception-log.txt";
-    
+class RevenueLogger {
+    private static final String REVENUE_FILE_NAME = "salerevenue-log.txt";
+    private PrintWriter revenueLogFile;
 
-    private PrintWriter exceptionLogFile;
-
-    public LogHandler(){
-        try 
+    RevenueLogger(){
+        try
         {
-            exceptionLogFile = new PrintWriter(EXCEPTION_FILE_NAME);
+            revenueLogFile = new PrintWriter(new FileWriter(REVENUE_FILE_NAME, true), true);
             
         } 
         catch (IOException ioExc) 
@@ -25,21 +25,20 @@ public class LogHandler {
         }
     }
 
-    public void logException(Exception exc){
+    void logRevenue(AmountDTO totalRevenue){
         StringBuilder logMessageBuilder = new StringBuilder();
-        logMessageBuilder.append("At ").append(setTime());
-        logMessageBuilder.append(", Following exception was thrown: ");
-        logMessageBuilder.append(exc.getMessage());
-        exceptionLogFile.println(logMessageBuilder);
+        logMessageBuilder.append(setTime());
+        logMessageBuilder.append(" Current total revenue: ");
+        logMessageBuilder.append(totalRevenue.getValue()).append("").append(totalRevenue.getCurrency().toString());
+        revenueLogFile.println(logMessageBuilder);
         System.out.println("\n");
-
+        
     }
 
-    
     private String setTime(){
         LocalDateTime time = LocalDateTime.now();
         DateTimeFormatter formatter =  DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         return time.format(formatter);
     }
-    
+
 }
