@@ -4,7 +4,7 @@ import java.util.List;
 
 import se.kth.iv1350.salesystem.controller.Controller;
 import se.kth.iv1350.salesystem.controller.OperationFailedException;
-import se.kth.iv1350.salesystem.integration.ItemIdentifierExceptionTest;
+import se.kth.iv1350.salesystem.integration.ItemIdentifierException;
 import se.kth.iv1350.salesystem.model.AmountDTO;
 import se.kth.iv1350.salesystem.model.ItemDTO;
 import se.kth.iv1350.salesystem.model.SaleDTO;
@@ -78,7 +78,7 @@ public class View {
                 System.out.printf("\nRunning Total: %.2f", saleInformation.getRunningTotalValue());
             } 
 
-            catch (ItemIdentifierExceptionTest exc) 
+            catch (ItemIdentifierException exc) 
             {
                 errorMessageHandler.showErrorMessage("Item could not be scanned, since itemID " + exc.getInvalidItemIdentifier() + " does not exist in inventory");
             }
@@ -135,7 +135,7 @@ public class View {
                 System.out.printf("\nRunning Total: %.2f", saleInformation.getRunningTotalValue());
             } 
 
-            catch (ItemIdentifierExceptionTest exc) 
+            catch (ItemIdentifierException exc) 
             {
                 errorMessageHandler.showErrorMessage("Item could not be scanned, since itemID " + exc.getInvalidItemIdentifier() + " does not exist in inventory");
             }
