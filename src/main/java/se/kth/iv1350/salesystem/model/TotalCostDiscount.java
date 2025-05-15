@@ -3,9 +3,14 @@ package se.kth.iv1350.salesystem.model;
 import java.util.List;
 
 public class TotalCostDiscount implements DiscountStrategy{
+    private List<DiscountDTO> totalCostDiscounts;
+
+    public TotalCostDiscount(List<DiscountDTO> totalCostDiscounts){
+        this.totalCostDiscounts = totalCostDiscounts;
+    }
 
     @Override
-    public AmountDTO calculateDiscount(DiscountEligibilityDTO discountEligibility, List<DiscountDTO> totalCostDiscounts){
+    public AmountDTO calculateDiscount(DiscountEligibilityDTO discountEligibility){
         
         
         for(DiscountDTO discount : totalCostDiscounts)

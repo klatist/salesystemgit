@@ -9,6 +9,7 @@ import se.kth.iv1350.salesystem.integration.ItemIdentifierException;
 import se.kth.iv1350.salesystem.integration.Printer;
 import se.kth.iv1350.salesystem.model.AmountDTO;
 import se.kth.iv1350.salesystem.model.CashPayment;
+import se.kth.iv1350.salesystem.model.DiscountEligibilityDTO;
 import se.kth.iv1350.salesystem.model.ItemInformationDTO;
 import se.kth.iv1350.salesystem.model.Register;
 import se.kth.iv1350.salesystem.model.RevenueObserver;
@@ -30,6 +31,8 @@ public class Controller {
 
     private Register register = new Register(0);
     private ExceptionLogger logger = new ExceptionLogger();
+    
+
     
     /**
      * This creates an instance of the constructor object. 
@@ -110,6 +113,12 @@ public class Controller {
     public AmountDTO endSale()
     {
         return sale.getTotalPrice();
+    }
+
+    public AmountDTO registerDiscount(int customerID){
+        SaleDTO saleInformation = sale.getSaleInformation();
+        DiscountEligibilityDTO discountEligibility = new DiscountEligibilityDTO(saleInformation, customerID);
+        
     }
 
 

@@ -123,7 +123,9 @@ public class Sale {
             currentItem.updateQuantity(itemQuantity);
             updateTotalPriceAndVAT();
         }
-    }   
+    }
+    
+    public void applyDiscounts()
     
 
 

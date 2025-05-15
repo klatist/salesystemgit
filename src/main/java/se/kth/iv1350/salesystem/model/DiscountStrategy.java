@@ -4,6 +4,6 @@ import java.util.List;
 
 public interface DiscountStrategy {
 
-    public AmountDTO calculateDiscount(DiscountEligibilityDTO discountEligibility, List<DiscountDTO> discounts);
+    public AmountDTO calculateDiscount(DiscountEligibilityDTO discountEligibility);
     
 }
