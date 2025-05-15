@@ -21,7 +21,7 @@ public class ItemDiscount implements DiscountStrategy {
             {
                 if (discount.getItemID() == item.getItemID())
                 {
-                    sumToReduce += discountEligibility.getTotalPrice(); 
+                    sumToReduce += discount.getDiscountAmount().getValue(); 
                 }
             }
         }

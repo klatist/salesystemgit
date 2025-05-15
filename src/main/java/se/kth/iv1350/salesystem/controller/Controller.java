@@ -9,15 +9,17 @@ import se.kth.iv1350.salesystem.integration.ItemIdentifierException;
 import se.kth.iv1350.salesystem.integration.Printer;
 import se.kth.iv1350.salesystem.model.AmountDTO;
 import se.kth.iv1350.salesystem.model.CashPayment;
+import se.kth.iv1350.salesystem.model.CustomerDiscount;
+import se.kth.iv1350.salesystem.model.DiscountComposite;
 import se.kth.iv1350.salesystem.model.DiscountEligibilityDTO;
+import se.kth.iv1350.salesystem.model.ItemDiscount;
 import se.kth.iv1350.salesystem.model.ItemInformationDTO;
 import se.kth.iv1350.salesystem.model.Register;
 import se.kth.iv1350.salesystem.model.RevenueObserver;
 import se.kth.iv1350.salesystem.model.Sale;
 import se.kth.iv1350.salesystem.model.SaleDTO;
+import se.kth.iv1350.salesystem.model.TotalCostDiscount;
 import se.kth.iv1350.salesystem.util.ExceptionLogger;
-import se.kth.iv1350.salesystem.model.DiscountComposite;
-import se.kth.iv1350.salesystem.model.*;
 ;
 
 /**

@@ -4,7 +4,7 @@ import java.util.List;
 
 import se.kth.iv1350.salesystem.controller.Controller;
 import se.kth.iv1350.salesystem.controller.OperationFailedException;
-import se.kth.iv1350.salesystem.integration.ItemIdentifierException;
+import se.kth.iv1350.salesystem.integration.ItemIdentifierExceptionTest;
 import se.kth.iv1350.salesystem.model.AmountDTO;
 import se.kth.iv1350.salesystem.model.ItemDTO;
 import se.kth.iv1350.salesystem.model.SaleDTO;
@@ -78,7 +78,7 @@ public class View {
                 System.out.printf("\nRunning Total: %.2f", saleInformation.getRunningTotalValue());
             } 
 
-            catch (ItemIdentifierException exc) 
+            catch (ItemIdentifierExceptionTest exc) 
             {
                 errorMessageHandler.showErrorMessage("Item could not be scanned, since itemID " + exc.getInvalidItemIdentifier() + " does not exist in inventory");
             }
@@ -104,7 +104,7 @@ public class View {
 
         AmountDTO totalPriceAfterDiscount = contr.registerDiscount(0304050607);
         System.out.println();
-        System.out.printf("Total Cost Discount Applied: %.2f%n", finalTotalPrice.getValue());
+        System.out.printf("Total Cost Discount Applied: %.2f%n", totalPriceAfterDiscount.getValue());
 
 
         AmountDTO paidAmount = new AmountDTO(200);
@@ -113,10 +113,10 @@ public class View {
         contr.printReceipt();
         System.out.printf("Change: %.2f%n\n", change.getValue());
 
-        /*//------------------------------Duplicerad sale-----------------------------------//
+        
         contr.startSale();
 
-        int[] itemIDs2 = {123456,654321,123456,000000};
+        int[] itemIDs2 = {654321,654321,123456,111111};
         int[] quantities2 = {1, 2,2, 1};
 
         System.out.println("---- SALE -----");
@@ -135,7 +135,7 @@ public class View {
                 System.out.printf("\nRunning Total: %.2f", saleInformation.getRunningTotalValue());
             } 
 
-            catch (ItemIdentifierException exc) 
+            catch (ItemIdentifierExceptionTest exc) 
             {
                 errorMessageHandler.showErrorMessage("Item could not be scanned, since itemID " + exc.getInvalidItemIdentifier() + " does not exist in inventory");
             }
@@ -162,7 +162,7 @@ public class View {
         AmountDTO change2 = contr.pay(paidAmount2);
         
         contr.printReceipt();
-        System.out.printf("Change: %.2f%n\n", change2.getValue());*/
+        System.out.printf("Change: %.2f%n\n", change2.getValue());
     }
 
     

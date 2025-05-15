@@ -18,7 +18,7 @@ public class CustomerDiscount implements DiscountStrategy{
         {  
             if(discountEligibility.getCustomerID() == discount.getCustomerID())
             {
-                sumToReduce += discountEligibility.getTotalPrice()*discount.getDiscountPercentage();
+                sumToReduce += discountEligibility.getTotalPrice() * discount.getDiscountPercentage();
             }
         }
 
