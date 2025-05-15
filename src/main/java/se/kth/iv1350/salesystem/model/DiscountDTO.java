@@ -13,13 +13,33 @@ public class DiscountDTO {
             
     }
     
-    public DiscountDTO(int customerID, double di){
-        this.itemID = currentItemId;
-        customerID
+    public DiscountDTO(int customerID, double discountPercentage){
+        this.customerID = customerID;
+        this.discountPercentage = discountPercentage;
     }
 
-    public DiscountDTO(int currentItemId){
-        this.itemID = currentItemId;
-        customerID
+    public DiscountDTO(AmountDTO minPurchaseAmountRequired, double discountPercentage){
+        this.minPurchaseAmountRequired = minPurchaseAmountRequired;
+        this.discountPercentage = discountPercentage;
+    }
+
+    public AmountDTO getDiscountAmount(){
+        return discountAmount;
+    }
+
+    public double getDiscountPercentage(){
+        return discountPercentage;
+    }
+
+    public AmountDTO getMinPurchaseAmountRequired(){
+        return minPurchaseAmountRequired;
+    }
+
+    public int getItemID(){
+        return itemID;
+    }
+
+    public int getCustomerID(){
+        return customerID;
     }
 }

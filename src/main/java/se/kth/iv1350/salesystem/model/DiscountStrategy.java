@@ -1,7 +1,9 @@
 package se.kth.iv1350.salesystem.model;
 
+import java.util.List;
+
 public interface DiscountStrategy {
 
-    public AmountDTO calculateDiscount(SaleDTO sale, DiscountDTO discountInformation);
+    public AmountDTO calculateDiscount(DiscountEligibilityDTO discountEligibility, List<DiscountDTO> discounts);
     
 }

@@ -1,49 +1,50 @@
 package se.kth.iv1350.salesystem.integration;
 
-import se.kth.iv1350.salesystem.model.DiscountDTO;
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
+
+import se.kth.iv1350.salesystem.model.AmountDTO;
+import se.kth.iv1350.salesystem.model.DiscountDTO;
 /**
  * This class represent a discount database.
  * It contains available discounts and handles search for applicable discounts.
  */
 public class DiscountDatabase {
 
-    private  List<DiscountDTO> customerDiscount;
-    private List<DiscountDTO> itemDiscount;
-    private List<DiscountDTO> totalCostDiscount;
+    private  List<DiscountDTO> customerDiscounts;
+    private List<DiscountDTO> itemDiscounts;
+    private List<DiscountDTO> totalCostDiscounts;
 
     public List<DiscountDTO> getCustomerDisount(){
-        return customerDiscount;
+        return customerDiscounts;
     }
     
     public List<DiscountDTO> getItemDisount(){
-        return itemDiscount;
+        return itemDiscounts;
     }
 
     public List<DiscountDTO> gettotalCostDisount(){
-        return totalCostDiscount;
+        return totalCostDiscounts;
     }
 
     public DiscountDatabase(){
-        this.customerDiscount = new ArrayList<>();
-        this.itemDiscount = new ArrayList<>();
-        this.totalCostDiscount = new ArrayList<>();
+        this.customerDiscounts = new ArrayList<>();
+        this.itemDiscounts = new ArrayList<>();
+        this.totalCostDiscounts = new ArrayList<>();
         addDiscount();
     }
 
     private void addDiscount(){
 
-        DiscountDTO studentDiscount = new DiscountDTO(111111,0.05);
-        DiscountDTO purchaseOver100 = new DiscountDTO();
-        DiscountDTO kalaspuffDiscount = new DiscountDTO();
+        DiscountDTO studentDiscount = new DiscountDTO(0304050607,0.1);
+        DiscountDTO purchaseOver100 = new DiscountDTO(new AmountDTO(100), 0.05);
+        DiscountDTO kalaspuffDiscount = new DiscountDTO(654321, new AmountDTO(7));
 
-        customerDiscount.add(studentDiscount);
-        itemDiscount.add(kalaspuffDiscount);
-        totalCostDiscount.add(purchaseOver100);
+        customerDiscounts.add(studentDiscount);
+        itemDiscounts.add(kalaspuffDiscount);
+        totalCostDiscounts.add(purchaseOver100);
 
     }
-
 
 }
 

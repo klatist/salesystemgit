@@ -1,13 +1,23 @@
 package se.kth.iv1350.salesystem.model;
 
+import java.util.List;
+
 public class TotalCostDiscount implements DiscountStrategy{
 
     @Override
-    public AmountDTO calculateDiscount(SaleDTO sale, DiscountDTO discountInformation){
+    public AmountDTO calculateDiscount(DiscountEligibilityDTO discountEligibility, List<DiscountDTO> totalCostDiscounts){
+        
+        
+        for(DiscountDTO discount : totalCostDiscounts)
+        {
+            if (discountEligibility.getTotalPrice() > discount.getMinPurchaseAmountRequired().getValue())
+            {
+                double sumToReduce = discountEligibility.getTotalPrice() * discount.getDiscountPercentage();
+                return new AmountDTO(sumToReduce);
+            }
+        }
 
-        //kommer ändras
-        AmountDTO totalCostDiscount = new AmountDTO(0);
-        return totalCostDiscount;
+        return new AmountDTO(0);        
     }
     
 }
