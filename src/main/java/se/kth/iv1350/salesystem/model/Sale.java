@@ -124,11 +124,10 @@ public class Sale {
             updateTotalPriceAndVAT();
         }
     }
-    
-    public void applyDiscounts()
-    
 
-
+    public void applyDiscounts(AmountDTO totalDiscount){
+        this.totalPrice = new AmountDTO(totalPrice.getValue() - totalDiscount.getValue());
+    }
 }
 
     

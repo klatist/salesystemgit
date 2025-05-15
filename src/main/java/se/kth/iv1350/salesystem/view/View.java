@@ -101,13 +101,19 @@ public class View {
         System.out.println();
         System.out.printf("Total Cost: %.2f%n", finalTotalPrice.getValue());
 
+
+        AmountDTO totalPriceAfterDiscount = contr.registerDiscount(0304050607);
+        System.out.println();
+        System.out.printf("Total Cost Discount Applied: %.2f%n", finalTotalPrice.getValue());
+
+
         AmountDTO paidAmount = new AmountDTO(200);
         AmountDTO change = contr.pay(paidAmount);
         
         contr.printReceipt();
         System.out.printf("Change: %.2f%n\n", change.getValue());
 
-        //------------------------------Duplicerad sale-----------------------------------//
+        /*//------------------------------Duplicerad sale-----------------------------------//
         contr.startSale();
 
         int[] itemIDs2 = {123456,654321,123456,000000};
@@ -156,7 +162,7 @@ public class View {
         AmountDTO change2 = contr.pay(paidAmount2);
         
         contr.printReceipt();
-        System.out.printf("Change: %.2f%n\n", change2.getValue());
+        System.out.printf("Change: %.2f%n\n", change2.getValue());*/
     }
 
     

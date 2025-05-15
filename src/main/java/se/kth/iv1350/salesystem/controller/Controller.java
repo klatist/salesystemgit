@@ -16,6 +16,8 @@ import se.kth.iv1350.salesystem.model.RevenueObserver;
 import se.kth.iv1350.salesystem.model.Sale;
 import se.kth.iv1350.salesystem.model.SaleDTO;
 import se.kth.iv1350.salesystem.util.ExceptionLogger;
+import se.kth.iv1350.salesystem.model.DiscountComposite;
+import se.kth.iv1350.salesystem.model.*;
 ;
 
 /**
@@ -31,6 +33,7 @@ public class Controller {
 
     private Register register = new Register(0);
     private ExceptionLogger logger = new ExceptionLogger();
+    private DiscountComposite discountComposite = new DiscountComposite();
     
 
     
@@ -118,7 +121,13 @@ public class Controller {
     public AmountDTO registerDiscount(int customerID){
         SaleDTO saleInformation = sale.getSaleInformation();
         DiscountEligibilityDTO discountEligibility = new DiscountEligibilityDTO(saleInformation, customerID);
-        
+        discountComposite.addDiscountStrategy(new ItemDiscount(discdatabase.getItemDiscounts()));
+        discountComposite.addDiscountStrategy(new CustomerDiscount(discdatabase.getCustomerDiscounts()));
+        discountComposite.addDiscountStrategy(new TotalCostDiscount(discdatabase.getTotalCostDiscounts()));
+
+        AmountDTO totalDiscount = discountComposite.calculateDiscount(discountEligibility);
+        sale.applyDiscounts(totalDiscount);
+        return sale.getTotalPrice();
     }
 
 

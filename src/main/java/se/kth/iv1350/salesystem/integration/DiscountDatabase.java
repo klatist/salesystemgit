@@ -15,15 +15,15 @@ public class DiscountDatabase {
     private List<DiscountDTO> itemDiscounts;
     private List<DiscountDTO> totalCostDiscounts;
 
-    public List<DiscountDTO> getCustomerDisount(){
+    public List<DiscountDTO> getCustomerDiscounts(){
         return customerDiscounts;
     }
     
-    public List<DiscountDTO> getItemDisount(){
+    public List<DiscountDTO> getItemDiscounts(){
         return itemDiscounts;
     }
 
-    public List<DiscountDTO> gettotalCostDisount(){
+    public List<DiscountDTO> getTotalCostDiscounts(){
         return totalCostDiscounts;
     }
 

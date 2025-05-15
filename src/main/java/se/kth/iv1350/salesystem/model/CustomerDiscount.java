@@ -4,11 +4,17 @@ import java.util.List;
 
 public class CustomerDiscount implements DiscountStrategy{
 
+    private List<DiscountDTO> customerDiscounts;
+
+    public CustomerDiscount(List<DiscountDTO> customerDiscounts){
+        this.customerDiscounts = customerDiscounts;
+    }
+
     @Override
-    public AmountDTO calculateDiscount(DiscountEligibilityDTO discountEligibility, List<DiscountDTO> costumerDiscounts){
+    public AmountDTO calculateDiscount(DiscountEligibilityDTO discountEligibility){
         double sumToReduce = 0;
 
-        for(DiscountDTO discount : costumerDiscounts)
+        for(DiscountDTO discount : customerDiscounts)
         {  
             if(discountEligibility.getCustomerID() == discount.getCustomerID())
             {
