@@ -120,9 +120,15 @@ public class Controller {
         return sale.getTotalPrice();
     }
 
+    /**
+     * Seearches for and applies discounts based on the customer ID and the informaiton about the sale which is summarised in
+     * the DiscountEligibilityDTO. Composite and Stratgy pattern is used to calculate discount. 
+     * @return The new total price aftr the discount is applied.
+     */
     public AmountDTO registerDiscount(int customerID){
         SaleDTO saleInformation = sale.getSaleInformation();
         DiscountEligibilityDTO discountEligibility = new DiscountEligibilityDTO(saleInformation, customerID);
+
         discountComposite.addDiscountStrategy(new ItemDiscount(discdatabase.getItemDiscounts()));
         discountComposite.addDiscountStrategy(new CustomerDiscount(discdatabase.getCustomerDiscounts()));
         discountComposite.addDiscountStrategy(new TotalCostDiscount(discdatabase.getTotalCostDiscounts()));

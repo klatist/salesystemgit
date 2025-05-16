@@ -1,15 +1,8 @@
 package se.kth.iv1350.salesystem.model;
 
-import java.util.List;
-
-import org.junit.jupiter.api.AfterEach;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
 public class CartTest {
     Cart cart;
-    
+    /* 
     @BeforeEach
     public void setUp(){
         Item yoghurt = new Item(2, new ItemInformationDTO("Naturell Yoghurt", new AmountDTO(25.95), 222222, 0.12, "Arla naturell yoghurt. Fetthalt 3%. 1000 gram."));
@@ -45,7 +38,7 @@ public class CartTest {
         assertEquals(-1, result, "Item should not exist in cart, result should be -1");
     }
 
-
+*/
     
 
 

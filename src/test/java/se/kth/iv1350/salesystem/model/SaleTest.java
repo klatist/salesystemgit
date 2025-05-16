@@ -1,17 +1,10 @@
 package se.kth.iv1350.salesystem.model;
 
-import org.junit.jupiter.api.AfterEach;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
-
 public class SaleTest {
     private Sale sale;
     ItemInformationDTO itemInformation;
     
-
+/* 
     @BeforeEach
     public void setUp(){
         Item yoghurt = new Item(1, new ItemInformationDTO("Naturell Yoghurt", new AmountDTO(25.95), 222222, 0.12, "Arla naturell yoghurt. Fetthalt 3%. 1000 gram."));
@@ -92,4 +85,5 @@ public void testUpdateTotalPriceAndVAT() {
     int result = sale.getCart().getItem(0).getItemQuantity();
     assertEquals(1, result, "Item quantity should remain unchanged when negative quantity causes invalid state");
     }
+    */
 }

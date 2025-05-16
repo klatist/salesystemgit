@@ -32,7 +32,7 @@ public class ExternalInventory {
     /**
      * Searches the inventory for an item based on the given itemID.
      * @param itemID the identifier for the item. 
-     * @throws ItemIdentifierException  if itemID does not exist in inventory.
+     * @throws ItemIdentifierExceptionTest  if itemID does not exist in inventory.
      * @throws DatabaseFailureException  if the database for some reason can not be called as expected.
      * @return if the itemID match an item in the inventory the <code>ItemInformationDTO</code> is returned. If there is no match <code>null</code> is returned
      */

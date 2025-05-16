@@ -1,12 +1,14 @@
 package se.kth.iv1350.salesystem.controller;
 
 import org.junit.jupiter.api.AfterEach;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.fail;
 
-import se.kth.iv1350.salesystem.integration.ItemIdentifierException;
+import se.kth.iv1350.salesystem.integration.DatabaseFailureException;
 import se.kth.iv1350.salesystem.integration.ExternalSystemCreator;
+import se.kth.iv1350.salesystem.integration.ItemIdentifierException;
 
 
 public class OperationFailedExceptionTest {
@@ -27,7 +29,7 @@ public class OperationFailedExceptionTest {
     }
 
     @Test
-    public void testOperationFailedException(){
+    public void testOperationFailedException() throws ItemIdentifierException{
         contr.startSale();
         try
         {
@@ -36,11 +38,8 @@ public class OperationFailedExceptionTest {
         }
         catch(OperationFailedException exc)
         {
-            
-        }
-        catch(ItemIdentifierException itemExc)
-        {
-            fail("Did not expect ItemIdentifierException to be thrown");
+            Throwable cause = exc.getCause();
+            assertTrue(cause instanceof DatabaseFailureException, "Expected cause to be DatabaseFailureExpection");
         }
     }
 

@@ -7,7 +7,8 @@ import se.kth.iv1350.salesystem.model.AmountDTO;
 import se.kth.iv1350.salesystem.model.DiscountDTO;
 /**
  * This class represent a discount database.
- * It contains available discounts and handles search for applicable discounts.
+ * The discounts are stored in a DiscountDTO which holds the requirement to get the discount and the discount (sum or %)
+ * and are divideed in the groups. 
  */
 public class DiscountDatabase {
 
@@ -27,6 +28,9 @@ public class DiscountDatabase {
         return totalCostDiscounts;
     }
 
+    /**
+     * The constructor creates the three lists and calls the addDiscount.
+     */
     public DiscountDatabase(){
         this.customerDiscounts = new ArrayList<>();
         this.itemDiscounts = new ArrayList<>();
@@ -34,6 +38,9 @@ public class DiscountDatabase {
         addDiscount();
     }
 
+    /**
+     * Adds hardcoded dicounts to the database lists. 
+     */
     private void addDiscount(){
 
         DiscountDTO studentDiscount = new DiscountDTO(0304050607,0.1);

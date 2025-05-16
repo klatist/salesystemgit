@@ -1,18 +1,26 @@
 package se.kth.iv1350.salesystem.util;
 
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.FileWriter;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-
+/**
+ * This class is responsible for logging exceptions that occur during the execution
+ * of the program. The exceptions are written to a log file along with a time stamp.
+ */
 public class ExceptionLogger {
     private static final String EXCEPTION_FILE_NAME = "saleexception-log.txt";
     
 
     private PrintWriter exceptionLogFile;
 
+    /**
+     * Creates an instance of <code>ExceptionLogger</code> and opens the log file for writing.
+     * If the file does not exist, it will created. If the file cannot be created, an error message
+     * will be printed to the standard output.
+     */
     public ExceptionLogger(){
         try 
         {
@@ -25,6 +33,12 @@ public class ExceptionLogger {
         }
     }
 
+    /**
+     * Logs the specified exception to the log file with a time stamp.
+     * 
+     * @param exc represents the exception that was thrown during program execution 
+     * that should be logged.
+     */
     public void logException(Exception exc){
         StringBuilder logMessageBuilder = new StringBuilder();
         logMessageBuilder.append("At ").append(setTime());
@@ -35,7 +49,6 @@ public class ExceptionLogger {
 
     }
 
-    
     private String setTime(){
         LocalDateTime time = LocalDateTime.now();
         DateTimeFormatter formatter =  DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
