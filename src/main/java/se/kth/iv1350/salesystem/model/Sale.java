@@ -124,7 +124,10 @@ public class Sale {
             updateTotalPriceAndVAT();
         }
     }
-
+    /**
+     * Updates the total price for the sale after a discount is applied.
+     * @param totalDiscount The total sum for the discount to reduce from totalPrice.
+     */
     public void applyDiscounts(AmountDTO totalDiscount){
         this.totalPrice = new AmountDTO(totalPrice.getValue() - totalDiscount.getValue());
     }
