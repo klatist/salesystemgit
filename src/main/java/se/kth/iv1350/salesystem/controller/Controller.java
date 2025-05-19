@@ -129,6 +129,8 @@ public class Controller {
         SaleDTO saleInformation = sale.getSaleInformation();
         DiscountEligibilityDTO discountEligibility = new DiscountEligibilityDTO(saleInformation, customerID);
 
+
+        discountComposite.clearDiscountStrategy();
         discountComposite.addDiscountStrategy(new ItemDiscount(discdatabase.getItemDiscounts()));
         discountComposite.addDiscountStrategy(new CustomerDiscount(discdatabase.getCustomerDiscounts()));
         discountComposite.addDiscountStrategy(new TotalCostDiscount(discdatabase.getTotalCostDiscounts()));

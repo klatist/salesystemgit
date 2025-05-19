@@ -19,6 +19,13 @@ public class DiscountComposite implements DiscountStrategy{
     }
 
     /**
+    * Clears the list of strategies so no duplicates will exist if new are added.
+    */
+    public void clearDiscountStrategy(){
+        discountStrategies.clear();
+    }
+
+    /**
      * Run the calculate discount method for all the strategies and calculate the total discount to reduce. 
      * @param discountEligibility Information to determine if the sale is eligible for discounts. 
      * @return totalDiscount The total sum to be reduced. 

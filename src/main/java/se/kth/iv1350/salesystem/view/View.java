@@ -59,8 +59,8 @@ public class View {
         
         contr.startSale();
 
-        int[] itemIDs = {123456,654321,123456,000000};
-        int[] quantities = {1, 2,2, 1};
+        int[] itemIDs = {123456,654321,123456, 999999,000000};
+        int[] quantities = {1,2,2,1,1};
 
         System.out.println("---- SALE -----");
 
@@ -113,7 +113,7 @@ public class View {
         contr.printReceipt();
         System.out.printf("Change: %.2f%n\n", change.getValue());
 
-        
+        //_____________________Next sale_____________________________
         contr.startSale();
 
         int[] itemIDs2 = {654321,654321,123456,111111};
@@ -121,7 +121,7 @@ public class View {
 
         System.out.println("---- SALE -----");
 
-        for(int i = 0; i < itemIDs.length; i++)
+        for(int i = 0; i < itemIDs2.length; i++)
         {
             try 
             {
