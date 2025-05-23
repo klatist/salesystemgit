@@ -11,6 +11,7 @@ import se.kth.iv1350.salesystem.model.SaleDTO;
 import se.kth.iv1350.salesystem.util.ExceptionLogger;
 import se.kth.iv1350.salesystem.util.TotalRevenueFileOutput;
 
+
 /**
  * The view class is a substitute for the user interface and makes calls to the controller to perform
  * the program functions. 
@@ -18,8 +19,8 @@ import se.kth.iv1350.salesystem.util.TotalRevenueFileOutput;
 public class View {
 
     private Controller contr;
-    private ErrorMessageHandler errorMessageHandler = new ErrorMessageHandler();
-    private ExceptionLogger exceptionLogger = new ExceptionLogger();
+    private ErrorMessageHandler errorMessageHandler = ErrorMessageHandler.getErrorMessageHandler();
+    private ExceptionLogger exceptionLogger = ExceptionLogger.getExceptionLogger();
     private TotalRevenueView revenueView = new TotalRevenueView();
     private TotalRevenueFileOutput revenueFileOutput = new TotalRevenueFileOutput();
     /**

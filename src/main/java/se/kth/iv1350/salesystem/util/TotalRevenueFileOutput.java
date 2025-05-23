@@ -1,15 +1,14 @@
 package se.kth.iv1350.salesystem.util;
 
 import se.kth.iv1350.salesystem.model.AmountDTO;
-import se.kth.iv1350.salesystem.model.RevenueObserver;
+import se.kth.iv1350.salesystem.view.ErrorMessageHandler;
 
 /**
  * This class is an implementation of the <code>RevenueObserver</code> interface that handles
  * the logging of the total revenue by calculating the new <code>totalRevenue</code> and then calling
  * the <code>RevenueLogger</code> to log after updating the <code>totalRevenue</code>.
  */
-public class TotalRevenueFileOutput implements RevenueObserver{
-    private AmountDTO totalRevenue;
+public class TotalRevenueFileOutput extends RevenueTemplate{
     private RevenueLogger logger;
 
     /**
@@ -17,7 +16,6 @@ public class TotalRevenueFileOutput implements RevenueObserver{
      * and the <code>logger</code>.
      */
     public TotalRevenueFileOutput(){
-        totalRevenue = new AmountDTO();
         logger = new RevenueLogger();
     }
 
@@ -29,12 +27,16 @@ public class TotalRevenueFileOutput implements RevenueObserver{
      * @param saleRevenue  represents the revenue from the most recent <code>sale</code>.
      */
     @Override
-    public void updateTotalRevenue(AmountDTO saleRevenue){
-        double newTotalRevenue = totalRevenue.getValue() + saleRevenue.getValue();
-        totalRevenue = new AmountDTO(newTotalRevenue);
+    protected void doPrintTotalRevenue(AmountDTO totalRevenue) throws Exception{
         
         logger.logRevenue(totalRevenue);
 
+    }
+
+    @Override
+    protected void handleErrors(Exception exc){
+        ErrorMessageHandler.getErrorMessageHandler().showErrorMessage("The total revenue could not be logged to the file.");
+        ExceptionLogger.getExceptionLogger().logException(exc);
     }
 
         

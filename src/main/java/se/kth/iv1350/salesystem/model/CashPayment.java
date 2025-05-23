@@ -46,7 +46,6 @@ public class CashPayment {
      */
     public void printReceipt(Printer printer){
         ReceiptDTO receipt = new ReceiptDTO(this);
-
         printer.printReceipt(receipt);
     }
 

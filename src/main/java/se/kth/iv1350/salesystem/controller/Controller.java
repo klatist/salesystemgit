@@ -34,7 +34,7 @@ public class Controller {
     private Printer printer;
 
     private Register register = new Register(0);
-    private ExceptionLogger logger = new ExceptionLogger();
+    private ExceptionLogger logger = ExceptionLogger.getExceptionLogger();
     private DiscountComposite discountComposite = new DiscountComposite();
     
 

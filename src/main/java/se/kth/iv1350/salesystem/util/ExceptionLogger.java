@@ -11,6 +11,7 @@ import java.time.format.DateTimeFormatter;
  * of the program. The exceptions are written to a log file along with a time stamp.
  */
 public class ExceptionLogger {
+    private static final ExceptionLogger EXCEPTION_LOGGER = new ExceptionLogger();
     private static final String EXCEPTION_FILE_NAME = "saleexception-log.txt";
     
 
@@ -21,7 +22,7 @@ public class ExceptionLogger {
      * If the file does not exist, it will created. If the file cannot be created, an error message
      * will be printed to the standard output.
      */
-    public ExceptionLogger(){
+    private ExceptionLogger(){
         try 
         {
             exceptionLogFile = new PrintWriter(new FileWriter(EXCEPTION_FILE_NAME, true), true);
@@ -31,6 +32,10 @@ public class ExceptionLogger {
             System.out.println("Could not create log file");
             ioExc.printStackTrace();
         }
+    }
+
+    public static ExceptionLogger getExceptionLogger(){
+        return EXCEPTION_LOGGER;
     }
 
     /**
