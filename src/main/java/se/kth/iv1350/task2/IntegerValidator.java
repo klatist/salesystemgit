@@ -25,7 +25,7 @@ public class IntegerValidator implements Validator<Integer>
     @Override
     public String getErrorMessage()
     {
-        return "Integer must have at most " + maxDigits + "digits.";
+        return "Integer cannot have more than " + maxDigits + " digits.";
     }
     
 }

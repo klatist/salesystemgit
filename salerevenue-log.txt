@@ -28,3 +28,5 @@
 2025-05-23 15:37:04 Current total revenue: 158.46SEK
 2025-05-23 15:38:45 Current total revenue: 158.46SEK
 2025-05-23 15:42:43 Current total revenue: 158.46SEK
+2025-05-23 21:33:40 Current total revenue: 115.23679999999999SEK
+2025-05-23 21:33:40 Current total revenue: 313.8688SEK

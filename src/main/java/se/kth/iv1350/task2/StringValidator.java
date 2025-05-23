@@ -17,7 +17,7 @@ public class StringValidator implements Validator<String>{
 
     @Override
     public String getErrorMessage(){
-        return "String cannot be null and string length must be at most" + maxLength + " characters.";
+        return "String cannot be null and string length cannot longer than " + maxLength + " characters.";
     }
     
 }

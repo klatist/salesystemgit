@@ -3,7 +3,7 @@ package se.kth.iv1350.task2;
 import java.util.HashMap;
 /**
  * This class is meant to adapt the <code>HashMap</code> class through composition by implementing
- * functionality that validates 
+ * functionality that validates the values of the key and value.
  */
 public class HashMapComposition<K, V> {
     private HashMap <K, V> internalMap = new HashMap<>();
@@ -18,12 +18,12 @@ public class HashMapComposition<K, V> {
     public V put(K key, V value) throws IllegalArgumentException{
         if(!keyValidator.isValid(key))
         {
-            throw new IllegalArgumentException("Invalid key: " + key + keyValidator.getErrorMessage());
+            throw new IllegalArgumentException("Invalid key " + key + " - " + keyValidator.getErrorMessage());
         }
 
         if(!valueValidator.isValid(value))
         {
-            throw new IllegalArgumentException("Invalid value " + valueValidator.getErrorMessage());
+            throw new IllegalArgumentException("Invalid value " + value + " - " + valueValidator.getErrorMessage());
         }
 
         return internalMap.put(key, value);

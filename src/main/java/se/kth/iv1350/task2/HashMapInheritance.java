@@ -2,6 +2,10 @@ package se.kth.iv1350.task2;
 
 import java.util.HashMap;
 
+/**
+ * This class is meant to adapt the <code>HashMap</code> class through inheritance by implementing
+ * functionality that validates the values of the key and value.
+ */
 public class HashMapInheritance<K, V> extends HashMap<K, V>
 {
     private Validator<K> keyValidator;
@@ -18,13 +22,13 @@ public class HashMapInheritance<K, V> extends HashMap<K, V>
     {
         if(!keyValidator.isValid(key))
         {
-            throw new IllegalArgumentException("Invalid key " + keyValidator.getErrorMessage());
+            throw new IllegalArgumentException("Invalid key " + key + " - " + keyValidator.getErrorMessage());
 
         }
 
         if(!valueValidator.isValid(value))
         {
-            throw new IllegalArgumentException("Invalid value " + valueValidator.getErrorMessage());
+            throw new IllegalArgumentException("Invalid value " + value + " - " + valueValidator.getErrorMessage());
         }
 
         return super.put(key, value);

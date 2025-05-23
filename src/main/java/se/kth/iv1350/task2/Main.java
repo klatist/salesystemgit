@@ -13,9 +13,10 @@ public class Main
         System.out.println("---- Using inheritance ----");
         HashMapInheritance<Integer,String> hashMapInherit = new HashMapInheritance<>(intValidator, stringValidator);
         hashMapInherit.put(654321,  "Kalaspuffar");
-        System.out.println("Added: 'Kalaspuffar', 654321");
+        System.out.println("Added: 654321 " + hashMapInherit.get(654321));
         HashMapInheritance<Integer, Object> hashMapInheritNotNull = new HashMapInheritance<>(intValidator, notNullValidator);
         hashMapInheritNotNull.put(123, new Object());
+        System.out.println("Added: 123, object");
 
 
         try 
@@ -24,7 +25,7 @@ public class Main
         } 
         catch (IllegalArgumentException exc) 
         {
-            ErrorMessageHandler.getErrorMessageHandler().showErrorMessage("Could not put key-value pair");
+            ErrorMessageHandler.getErrorMessageHandler().showErrorMessage(exc.getMessage());
         }
         
         try 
@@ -33,7 +34,8 @@ public class Main
         } 
         catch (IllegalArgumentException exc) 
         {
-            ErrorMessageHandler.getErrorMessageHandler().showErrorMessage("Could not put key-value pair.");
+            
+            ErrorMessageHandler.getErrorMessageHandler().showErrorMessage(exc.getMessage());
         }
 
         try
@@ -42,17 +44,19 @@ public class Main
         }
         catch(IllegalArgumentException exc)
         {
-            ErrorMessageHandler.getErrorMessageHandler().showErrorMessage("Could not put key-value pair");
+            ErrorMessageHandler.getErrorMessageHandler().showErrorMessage(exc.getMessage());
         }
 
+        System.out.println();
 
         System.out.println("---- Using composition ----");
         HashMapComposition hashMapComposition = new HashMapComposition<>(intValidator, stringValidator);
         hashMapComposition.put(978348, "Hallonsaft");
-        System.out.println("Added: 978348" + hashMapComposition.get(978348));
+        System.out.println("Added: 978348 " + hashMapComposition.get(978348));
 
         HashMapComposition hashMapCompositionNotNull = new HashMapComposition<>(intValidator, notNullValidator);
         hashMapCompositionNotNull.put(987, new Object());
+        System.out.println("Added: 987, object");
 
         try
         {
@@ -60,7 +64,7 @@ public class Main
         }
         catch(IllegalArgumentException exc)
         {
-            ErrorMessageHandler.getErrorMessageHandler().showErrorMessage("Could not put key-value pair.");
+            ErrorMessageHandler.getErrorMessageHandler().showErrorMessage(exc.getMessage());
         }
 
         try 
@@ -69,7 +73,7 @@ public class Main
         } 
         catch (IllegalArgumentException exc) 
         {
-            ErrorMessageHandler.getErrorMessageHandler().showErrorMessage("Could not put key-value pair.");
+            ErrorMessageHandler.getErrorMessageHandler().showErrorMessage(exc.getMessage());
         }
 
         try 
@@ -78,7 +82,7 @@ public class Main
         } 
         catch (IllegalArgumentException exc) 
         {
-            ErrorMessageHandler.getErrorMessageHandler().showErrorMessage("Could not put key-value pair.");
+            ErrorMessageHandler.getErrorMessageHandler().showErrorMessage(exc.getMessage());
         }
 
     }
