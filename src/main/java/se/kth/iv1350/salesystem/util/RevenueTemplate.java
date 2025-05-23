@@ -13,8 +13,8 @@ public abstract class RevenueTemplate implements RevenueObserver{
     
     /**
      * Implements the updateTotalRevenue from RevenvueObserver.
-     * Calculates the total revenue and print it..2f
-     * @param saleRevenue the reevenue from the completed sale.
+     * Calculates the total revenue and print it by calling the subclasses methods. 
+     * @param saleRevenue the revenue from the completed sale.
      */
     @Override
     public void updateTotalRevenue(AmountDTO saleRevenue){
@@ -24,7 +24,7 @@ public abstract class RevenueTemplate implements RevenueObserver{
 
     /**
      * Calculates the new total revenue by adding the lateet revenue to the total revenue. 
-     * @param saleRevenue
+     * @param saleRevenue the revenue from the completed sale.
      */
     private void calculateTotalRevenue(AmountDTO saleRevenue)
     {
@@ -33,7 +33,8 @@ public abstract class RevenueTemplate implements RevenueObserver{
     }
 
     /**
-     * Prints the total revenue by calling abstract classes 
+     * Prints the total revenue by calling abstract classes doPrintTotalReveneu and the handleErors
+     * which is the observsers implementations of the abstract methods. 
      */
     private void printTotalRevenue(){
         try
@@ -46,9 +47,17 @@ public abstract class RevenueTemplate implements RevenueObserver{
         }
     
     }
-        
-    protected abstract void doPrintTotalRevenue(AmountDTO totalRevenue) throws Exception;
 
+    /**
+    * Defines the method that prints the total revenue. Must be implemented by the observer subclasses.
+    * @param totalRevenue the total revenue since the program started. 
+    */   
+    protected abstract void doPrintTotalRevenue(AmountDTO totalRevenue) throws Exception;
+    
+    /**
+    * Defines the method that handles errors. Must be implemented by the observer subclasses.
+    * @param exc the thrown exception
+    */ 
     protected abstract void handleErrors(Exception exc);
 
 }

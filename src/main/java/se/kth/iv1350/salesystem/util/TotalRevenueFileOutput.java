@@ -33,6 +33,12 @@ public class TotalRevenueFileOutput extends RevenueTemplate{
 
     }
 
+    /**
+     * Handles the exception that was thrown by printing a suitable message for the user and then logs
+     * to the exception log file for the developers.
+     * 
+     * @param exc 
+     */
     @Override
     protected void handleErrors(Exception exc){
         ErrorMessageHandler.getErrorMessageHandler().showErrorMessage("The total revenue could not be logged to the file.");

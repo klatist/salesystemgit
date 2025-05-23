@@ -1,7 +1,7 @@
 package se.kth.iv1350.salesystem.view;
 
 /**
- * This class is responsible for printing information about exceptions being thrown
+ * This singleton class is responsible for printing information about exceptions being thrown
  * during program execution to the <code>view</code>. The messages are meant to suit the user
  * of the program.
  */
@@ -9,6 +9,10 @@ public class ErrorMessageHandler
 {
     private static final ErrorMessageHandler ERROR_MESSAGE_HANDLER = new ErrorMessageHandler();
 
+    /**
+     * Returns the instance of the already instantiated <code>ErrorMessageHandler</code> object.
+     * @return the <code>ErrorMessageHandler</code> object <code>ERROR_MESSAGE_HANDLER</code>
+     */
     public static ErrorMessageHandler getErrorMessageHandler(){
         return ERROR_MESSAGE_HANDLER;
     } 
