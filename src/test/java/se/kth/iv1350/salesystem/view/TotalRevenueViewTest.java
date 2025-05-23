@@ -11,16 +11,19 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import se.kth.iv1350.salesystem.controller.*;
 import se.kth.iv1350.salesystem.integration.ExternalSystemCreator;
-import se.kth.iv1350.salesystem.util.TotalRevenueFileOutput;
+import se.kth.iv1350.salesystem.model.AmountDTO;
+import se.kth.iv1350.salesystem.view.TotalRevenueView;
 
 public class TotalRevenueViewTest {
-    private TotalRevenueFileOutput observer;
+    private TotalRevenueView observer;
     private ByteArrayOutputStream outputStream;
     private PrintStream originalOut = System.out;
+    private AmountDTO totalRevenue;
     
     @BeforeEach
     public void setUp(){
-        observer = new TotalRevenueFileOutput();
+        observer = new TotalRevenueView();
+        totalRevenue = new AmountDTO(158.46);
 
         outputStream = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outputStream));
@@ -35,8 +38,13 @@ public class TotalRevenueViewTest {
     }
 
     @Test
-    public void testDoPrintTotalRevenue(){
-        
+    public void testDoPrintTotalRevenue() throws Exception{
+        observer.doPrintTotalRevenue(totalRevenue);
+        String expectedCurrency = totalRevenue.getCurrency().toString();
+        String expectedOutput = String.format("\n Total Revenue: %.2f %s\n", totalRevenue.getValue(), expectedCurrency);
 
+        String actualOutput = outputStream.toString();
+
+        assertTrue(actualOutput.contains(expectedOutput), "Output should contain the formatted total revenue and currency.");
     }
 }

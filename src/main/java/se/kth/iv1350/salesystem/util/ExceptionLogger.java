@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 /**
- * This class is responsible for logging exceptions that occur during the execution
+ * This singleton class is responsible for logging exceptions that occur during the execution
  * of the program. The exceptions are written to a log file along with a time stamp.
  */
 public class ExceptionLogger {
@@ -33,7 +33,10 @@ public class ExceptionLogger {
             ioExc.printStackTrace();
         }
     }
-
+    /**
+     * Hands out the Exception logger so other class can call the methods.
+     * @return EXCEPTION_LOGGER
+     */
     public static ExceptionLogger getExceptionLogger(){
         return EXCEPTION_LOGGER;
     }

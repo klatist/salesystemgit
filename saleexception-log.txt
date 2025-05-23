@@ -28,3 +28,6 @@ At 2025-05-23 13:40:34, Following exception was thrown: Could not print
 At 2025-05-23 14:37:56, Following exception was thrown: Can not scan item with itemID 999999, because it does not exist in inventory
 At 2025-05-23 14:37:56, Following exception was thrown: Cannot invoke "se.kth.iv1350.salesystem.model.ItemDTO.getItemName()" because "currentItem" is null
 At 2025-05-23 14:37:56, Following exception was thrown: Database can not be called.
+At 2025-05-23 15:36:55, Following exception was thrown: Can not scan item with itemID 999999, because it does not exist in inventory
+At 2025-05-23 15:36:55, Following exception was thrown: null
+At 2025-05-23 15:36:55, Following exception was thrown: Database can not be called.
