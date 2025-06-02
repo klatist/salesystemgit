@@ -8,8 +8,8 @@ public class ValidatorFactory {
     /**
      * Selects a suitable <code>Validator</code> class based on which type of class that is sent in as
      * argument and creates and returns an instance of the selected <code>Validator</code>.
-     * @param <T>
-     * @param valClass
+     * @param valClass  represents the class type of the <code>Validator</code> object that can be of any
+     * type. 
      * @param maxConstraint  represents the maximum constraint if there is one, for example a max length 
      * of a <code>String</code> or max amount of digits of an integer.
      * @return an object of the selected <code>Validator</code> type.
