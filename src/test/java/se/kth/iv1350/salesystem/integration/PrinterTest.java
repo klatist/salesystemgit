@@ -1,11 +1,9 @@
-package se.kth.iv1350.salesystem.model;
+package se.kth.iv1350.salesystem.integration;
 
 
 import se.kth.iv1350.salesystem.controller.*;
 import se.kth.iv1350.salesystem.integration.Printer;
 import se.kth.iv1350.salesystem.integration.ExternalSystemCreator;
-import se.kth.iv1350.salesystem.model.AmountDTO;
-import se.kth.iv1350.salesystem.model.CashPayment;
 import se.kth.iv1350.salesystem.model.*;
 
 
